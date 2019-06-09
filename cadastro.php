@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +11,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link href="css/bootstrap.css" rel="stylesheet" >
 
     <style>
       .bd-placeholder-img {

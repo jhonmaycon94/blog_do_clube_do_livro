@@ -1,0 +1,20 @@
+.box{
+    border: 1px dotted red;
+}
+
+html, body, .row{
+    height: 100%;
+}
+
+html, body{
+    background-color: rgb(255, 215, 200);
+}
+
+button{
+    width: 100%;
+}
+
+img{
+    width: 200px;
+    align-self: center;
+}

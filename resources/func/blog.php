@@ -1,6 +1,5 @@
 <?php
-date_default_timezone_set('America/Recife');
-include_once $_SERVER['DOCUMENT_ROOT'].'/BookClub_Site/blog/resources/conexao.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/blog_do_clube_do_livro/resources/conexao.php';
 
 //insere os dados no banco de dados
 function add_post($user_id, $title, $conteudo){
@@ -68,19 +67,26 @@ function get_username_from_id($id){
 //recupera a lista de post do banco de dados
 function get_posts(){
   global $mysqli;
+  $posts_info = array();
+  $posts = array();
   $query = "SELECT *,DATE_FORMAT(data, '%d/%b/%Y') as data_formatada FROM posts";
   if(!$mysqli->query($query)){
-    echo $mysqli->error;
-  }else{
-    while($result = $mysqli->query($query)->fetch_assoc())
-      $posts = $result;
-      return $posts;
-    /*while ($row = $result->fetch_assoc()) {
-      echo "<h1>".$row['title']."</h1><br/>";
-      echo "<p>".$row['texto']."<p><br/>";
-      echo "<h6>postado por ".get_username_from_id($row['user_id'])." em ".$row['data_formatada']."</h6><br/><br/>";
-    }*/
+    return false;
   }
+  else
+  {
+    $result = $mysqli->query($query);
+    while($row = $result->fetch_assoc()){
+      $posts_info["id"] = $row["id"];
+      $posts_info["autor"] = $row["user_id"];
+      $posts_info["titulo"] = $row["title"];
+      $posts_info["conteudo"] = $row["texto"];
+      $posts_info["data_publicacao"] = $row["data_formatada"];
+      $posts[] = [$posts_info];
+    }
+  }
+  return $posts;
 }
+
 
 ?>
