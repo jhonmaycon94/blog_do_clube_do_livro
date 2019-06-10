@@ -9,7 +9,7 @@ function msg_status_login(){
 }
 
 function redireciona_status_login(){
-  return(status_login())? "logout.php" : "login.php";
+  return(status_login())? "resources/logout.php" : "login.php";
 }
 
 function mostra_username(){

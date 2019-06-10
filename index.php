@@ -1,58 +1,4 @@
-<?php
-include_once('resources/init.php');
-?>
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Blog do clube do livro">
-    <meta name="author" content="Jhon Maycon">
-    <title>Clube do Livro - Estância</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-            <a class="text-muted" href="<?php echo redireciona_cadastro_perfil()?>"><?php echo mostra_username()?></a>
-          </div>
-          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">Clube do Livro<br/>Estância</a>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="text-muted" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-            </a>
-            <a class="btn btn-sm btn-outline-secondary" href="<?php echo redireciona_status_login();?>"><?php echo msg_status_login(); ?></a>
-           </div>
-          </div>
-        </header>
+<?php require_once "includes/bigheader.php"; ?>
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
@@ -168,17 +114,4 @@ include_once('resources/init.php');
 
 </main><!-- /.container -->
 
-<footer class="blog-footer text-center">
-  <p>Blog template construído com <a href="https://getbootstrap.com/">Bootstrap</a> by &copy; Jhon Maycon - 2019</p>
-  <p></p>
-  <p>
-    <a href="#">De volta para o topo</a>
-  </p>
-</footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-</html>
+<?php require_once "includes/bigfooter.php"; ?>
