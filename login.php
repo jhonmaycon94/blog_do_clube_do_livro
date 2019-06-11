@@ -14,11 +14,14 @@
 
                 for($i=1; $i<=6; $i++){
                   if($_GET['erro'] == $i){
-                    echo "<p class= 'bg-danger text-center p-erro'>".$erros[$i]."</p>";
+                    echo "<p class= 'bg-danger text-center p-msg'>".$erros[$i]."</p>";
                     break;
                   }
               }
+              if($_GET['login'] == 'sucesso'){
+              echo "<p class= 'bg-success text-center p-msg'>Logado com sucesso!</p>";
             }
+            }  
             ?>
             <form action="resources/login_res.php" method="POST">
               <div class="form-group">
