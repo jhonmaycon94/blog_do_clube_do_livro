@@ -6,9 +6,9 @@ html, body, .row{
     height: 100%;
 }
 
-html, body{
+/*html, body{
     background-color: rgb(255, 215, 200);
-}
+}*/
 
 button{
     width: 100%;
@@ -17,4 +17,9 @@ button{
 img{
     width: 200px;
     align-self: center;
+}
+
+.p-erro{
+  color: #fff;
+  font-weight: bold;
 }

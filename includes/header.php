@@ -5,7 +5,7 @@
             <a class="text-muted" href="<?php echo redireciona_cadastro_perfil()?>"><?php echo mostra_username()?></a>
           </div>
           <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">Clube do Livro<br/>Estância</a>
+            <a class="blog-header-logo text-dark" href="index.php">Clube do Livro<br/>Estância</a>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="text-muted" href="#">

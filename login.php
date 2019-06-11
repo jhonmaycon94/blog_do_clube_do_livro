@@ -3,6 +3,23 @@
         <div class="col-md-4"></div>
           <div class="col-md-4">
             <img src="_imagens/livro-aberto.png" alt="livro aberto">
+            <?php
+              if(isset($_GET['erro'])){
+                $erros = [1 => "O formulário não pode ser enviado em branco",
+                          2 => "O usuário não pode ser deixado em branco",
+                          3 => "A senha não pode ser deixada em branco",
+                          4 => "Erro na consulta ao banco de dados",
+                          5 => "Usuário não existe",
+                          6 => "Usuário ou senha incorretos"];
+
+                for($i=1; $i<=6; $i++){
+                  if($_GET['erro'] == $i){
+                    echo "<p class= 'bg-danger text-center p-erro'>".$erros[$i]."</p>";
+                    break;
+                  }
+              }
+            }
+            ?>
             <form action="resources/login_res.php" method="POST">
               <div class="form-group">
                 <label for='username' class="sr-only">Usuário:</label>
@@ -15,6 +32,6 @@
               <button type="submit" class="btn btn-primary" name="bt_submit_login">Login</button>
             </form>
           </div>
-          <div class="col-md-4"></div>  
-        </div>  
+          <div class="col-md-4"></div>
+        </div>
         <?php require_once "includes/bigfooter.php"; ?>
