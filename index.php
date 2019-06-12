@@ -96,7 +96,7 @@
           <?php if(isset($_SESSION['user_id'])){
             echo '<i class="fas fa-edit" onclick="edit_sobre()" id="icone_editar_sobre"></i>';
           } ?>
-        <p id="p_sobre" class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <p id="p_sobre" class="mb-0"><?php echo get_sobre(); ?></p>
       </div>
 
       <div class="p-4">

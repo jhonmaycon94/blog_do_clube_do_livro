@@ -13,7 +13,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-2"></div>
 
-              </div>  
+              </div>
             </div>
             <?php
               if(isset($_GET['erro'])){
@@ -30,10 +30,11 @@
                     break;
                   }
               }
+            }else if(isset($_GET['login'])){
               if($_GET['login'] == 'sucesso'){
               echo "<p class= 'bg-success text-center p-msg'>Logado com sucesso!</p>";
             }
-            }  
+            }
             ?>
             <form action="resources/login_res.php" method="POST">
               <div class="form-group">

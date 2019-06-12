@@ -88,5 +88,20 @@ function get_posts(){
   return $posts;
 }
 
+function get_sobre(){
+  global $mysqli;
+
+  $sobre = array();
+
+  $query = "SELECT sobre FROM blog";
+  if(!($result = $mysqli->query($query))){
+    return false;
+  }
+  else{
+    $sobre = $result->fetch_assoc();
+    return $sobre['sobre'];
+  }
+}
+
 
 ?>

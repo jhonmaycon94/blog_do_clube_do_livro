@@ -7,7 +7,7 @@ function edit_sobre(){
   //cria o formulario para substituir o parágrafo
   //texto no modo edição;
   var form = document.createElement('form');
-  form.action = "#";
+  form.action = "resources/sobre_res.php";
   form.method = "post";
   form.classList.add("mt-2");
 
@@ -31,6 +31,7 @@ function edit_sobre(){
   bt.classList.add("btn");
   bt.classList.add("btn-dark");
   bt.classList.add("btn-sm");
+  bt.name = "bt_editar_sobre";
   bt.innerText = "Editar";
 
   //cria toda a estrutura do formulario e substitui o parágrafo

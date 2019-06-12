@@ -1,8 +1,11 @@
 <?php
+//verificar se o usuario chegou até Esta
+//página clicando no botão publicar.
 if(!isset($_POST['bt_publicar'])){
   header("Location: ../add_post.php");
   exit();
 }
+//verifica se o formulario foi enviado vazio;
 else{
   $titulo = trim($_POST['titulo']);
   $conteudo = trim($_POST['conteudo']);
@@ -10,14 +13,19 @@ else{
     header("Location: ../add_post.php?erro=1");
     exit();
   }
+
+  //verifica se o titulo foi enviado vazio;
   else if(empty($titulo)){
     header("Location: ../add_post.php?erro=2");
     exit();
   }
+
+  //verifica se o conteudo foi enviado vazio
   else if(empty($conteudo)){
     header("Location: ../add_post.php?erro=3");
     exit();
   }
+  //se não ocorrer erros insere os dados no banco de dados
   else{
       session_start();
 
