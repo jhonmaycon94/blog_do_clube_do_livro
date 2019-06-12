@@ -39,7 +39,7 @@
             <form action="resources/login_res.php" method="POST">
               <div class="form-group">
                 <label for='username' class="sr-only">Usuário:</label>
-                <input type="text" name="username" placeholder="usuário" id="username" class="form-control">
+                <input type="text" name="username" placeholder="usuário" id="username" class="form-control" value="<?php echo retorna_usuario() ?>">
               </div>
               <div class="form-group">
                 <label for='senha' class="sr-only">Senha:</label>

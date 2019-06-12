@@ -17,7 +17,17 @@ function mostra_username(){
 }
 
 function redireciona_cadastro_perfil(){
-  return(status_login()) ? "perfil.php" : "cadastro.php"; 
+  return(status_login()) ? "perfil.php" : "cadastro.php";
+}
+
+function retorna_usuario(){
+  if(isset($_GET['erro'])){
+    if($_GET['erro'] == 3 || $_GET['erro'] == 6){
+      return $_GET['username'];
+    }
+  }else {
+    return;
+  }
 }
 
 ?>
