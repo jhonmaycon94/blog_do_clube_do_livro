@@ -2,24 +2,23 @@
     border: 1px dotted red;
 }
 
-html, body, .row{
+html, body{
     height: 100%;
-}
-
-/*html, body{
-    background-color: rgb(255, 215, 200);
-}*/
-
-button{
-    width: 100%;
 }
 
 img{
     width: 200px;
-    align-self: center;
 }
 
 .p-msg{
   color: #fff;
   font-weight: bold;
+}
+
+.teste{
+    height: 100%;
+}
+
+.wrap-content{
+    margin-bottom: 70px;
 }

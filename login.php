@@ -2,7 +2,19 @@
       <div class="row align-items-center">
         <div class="col-md-4"></div>
           <div class="col-md-4">
-            <img src="_imagens/livro-aberto.png" alt="livro aberto">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                  <img src="_imagens/livro-aberto.png" alt="livro aberto">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"></div>
+
+              </div>  
+            </div>
             <?php
               if(isset($_GET['erro'])){
                 $erros = [1 => "O formulário não pode ser enviado em branco",
@@ -32,9 +44,10 @@
                 <label for='senha' class="sr-only">Senha:</label>
                 <input type="password" name="senha" placeholder="senha" id="senha" class="form-control">
               </div>
-              <button type="submit" class="btn btn-primary" name="bt_submit_login">Login</button>
+              <button type="submit" class="btn btn-primary btn-block" name="bt_submit_login">Login</button>
             </form>
           </div>
           <div class="col-md-4"></div>
         </div>
+          </div>
         <?php require_once "includes/bigfooter.php"; ?>

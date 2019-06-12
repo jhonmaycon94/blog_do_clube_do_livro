@@ -76,6 +76,12 @@
         }
     }
       ?>
+      
+      <?php 
+      if(isset($_SESSION['user_id'])){
+        echo '<a href="add_post.php">Nova Publicação</a><br/>';
+      }
+      ?>
 
       <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Mais Antigas</a>
