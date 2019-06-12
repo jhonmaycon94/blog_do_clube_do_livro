@@ -64,25 +64,27 @@
         Nova Postagem
       </h3>
 
-      <form action="processa_novo_post" method="POST">
+      <form action="resources/novo_post_res.php" method="POST">
         <div class="form-group">
           <label class=sr-only for=titulo>Título:</label>
           <input type="text" id=titulo name=titulo class="form-control" placeholder="Título:">
         </div>
         <div class="form-group">
-          <label class="sr-only" for="conteudo">Escreva aqui sua nova postagem</label>
-          <textarea id="conteudo" name="conteudo" class="form-control" placeholder="Escreva aqui sua nova postagem..." rows="20">
-          </textarea>
+        <label class="sr-only" for="conteudo">Escreva aqui sua nova postagem</label>
+        <textarea id="conteudo" name="conteudo" class="form-control" placeholder="Escreva aqui sua nova postagem..." rows="20"></textarea>
         </div>
-        <button type="submit" id=bt_publicar name=bt_publicar class="btn btn-dark">Publicar</button>         
+        <button type="submit" id=bt_publicar name=bt_publicar class="btn btn-dark">Publicar</button>
       </form>
 
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
-      <div class="p-4 mb-3 bg-light rounded">
-        <h4 class="font-italic">Sobre</h4>
-        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      <div class="p-4 mb-3 bg-light rounded" id="div-aside">
+        <h4 class="font-italic" id="h4-aside">Sobre</h4>
+          <?php if(isset($_SESSION['user_id'])){
+            echo '<i class="fas fa-edit" onclick="edit_sobre()" id="icone_editar_sobre"></i>';
+          } ?>  
+        <p id="p_sobre" class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
       </div>
 
       <div class="p-4">

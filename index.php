@@ -76,8 +76,8 @@
         }
     }
       ?>
-      
-      <?php 
+
+      <?php
       if(isset($_SESSION['user_id'])){
         echo '<a href="add_post.php">Nova Publicação</a><br/>';
       }
@@ -91,9 +91,12 @@
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
-      <div class="p-4 mb-3 bg-light rounded">
-        <h4 class="font-italic">Sobre</h4>
-        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      <div class="p-4 mb-3 bg-light rounded" id="div-aside">
+        <h4 class="font-italic" id="h4-aside">Sobre</h4>
+          <?php if(isset($_SESSION['user_id'])){
+            echo '<i class="fas fa-edit" onclick="edit_sobre()" id="icone_editar_sobre"></i>';
+          } ?>
+        <p id="p_sobre" class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
       </div>
 
       <div class="p-4">

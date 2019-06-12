@@ -22,3 +22,15 @@ img{
 .wrap-content{
     margin-bottom: 70px;
 }
+
+#h4-aside{
+display: inline;
+}
+
+i{
+right: 0px;
+}
+
+#a-edit-icon{
+  color: black;
+}
