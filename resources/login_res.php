@@ -19,6 +19,10 @@ if(!isset($_POST['bt_submit_login'])){
     header("Location: ../login.php?erro=3&username=".$_POST['username']);
     exit();
   }
+  else if(trim($_POST['senha']).strlen() < 4){
+    header("Location: ../login.php?erro=7&username=".$_POST['username']);
+    exit();
+  }
   else{
     //requere o objeto mysqli que representa
     //uma conexão ao banco de dados

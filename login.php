@@ -22,9 +22,10 @@
                           3 => "A senha não pode ser deixada em branco",
                           4 => "Erro na consulta ao banco de dados",
                           5 => "Usuário não existe",
-                          6 => "Usuário ou senha incorretos"];
+                          6 => "Usuário ou senha incorretos",
+                          7 => "Senha muito curta. Mínimo 4 caracteres"];
 
-                for($i=1; $i<=6; $i++){
+                for($i=1; $i<=count($erros); $i++){
                   if($_GET['erro'] == $i){
                     echo "<p class= 'bg-danger text-center p-msg'>".$erros[$i]."</p>";
                     break;
