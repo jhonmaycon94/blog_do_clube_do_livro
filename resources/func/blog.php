@@ -46,7 +46,7 @@ function delete_post($id){
   if(!($stmt = $mysqli->prepare($sql))){
     return;
   }
-  else if(!($stmt->(bind_param('s', $id)))){
+  else if(!($stmt->bind_param('s', $id))){
     return;
   }
   else if(!($stmt->execute())){
@@ -73,11 +73,17 @@ function get_username_from_id($id){
 }
 
 //recupera a lista de post do banco de dados
-function get_posts(){
+function get_posts($id = null){
   global $mysqli;
-  $posts_info = array();
   $posts = array();
   $query = "SELECT *,DATE_FORMAT(data, '%d/%b/%Y') as data_formatada FROM posts";
+
+  if(isset($id)){
+    $query .= " WHERE id = ".$id;
+  }
+
+  $query .= " ORDER BY id DESC";
+  
   if(!$mysqli->query($query)){
     return false;
   }
@@ -85,12 +91,7 @@ function get_posts(){
   {
     $result = $mysqli->query($query);
     while($row = $result->fetch_assoc()){
-      $posts_info["id"] = $row["id"];
-      $posts_info["autor"] = $row["user_id"];
-      $posts_info["titulo"] = $row["title"];
-      $posts_info["conteudo"] = $row["texto"];
-      $posts_info["data_publicacao"] = $row["data_formatada"];
-      $posts[] = [$posts_info];
+      $posts[] = $row;
     }
   }
   return $posts;

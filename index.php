@@ -65,17 +65,14 @@
       </h3>
 
       <?php
-      $posts = get_posts();
-      foreach($posts as $key=>$post){
-        foreach($post as $post){ ?>
+      $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null));
+        foreach($posts as $post){ ?>
           <div class="blog-post">
-          <h2 class="blog-post-title"><?php echo $post["titulo"] ?></h2>
-          <p class="blog-post-meta"><?php echo $post["data_publicacao"] ?> "por" <a href="#"><?php echo get_username_from_id($post["autor"])?></a></p>
-          <p><?php echo $post["conteudo"] ?>
+          <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>"><?php echo $post["title"]; ?></a></h2>
+          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($post["user_id"]);?></a></p>
+          <p><?php echo $post["texto"]; ?>
           </div>
-      <?php  }
-    }
-      ?>
+      <?php }?>
 
       <?php
       if(isset($_SESSION['user_id'])){
