@@ -40,12 +40,20 @@ function edit_post($post_id, $user_id,$title, $conteudo){
 
 function delete_post($id){
   global $mysqli;
-  $query = "DELETE FROM posts WHERE id = $id;";
+  $sql = "DELETE FROM posts WHERE id = ?";
 
-  if($mysqli->query($query)){
+  $stmt = $mysqli->smtm_init();
+  if(!($stmt = $mysqli->prepare($sql))){
+    return;
+  }
+  else if(!($stmt->(bind_param('s', $id)))){
+    return;
+  }
+  else if(!($stmt->execute())){
+    return;
+  }
+  else{
     return true;
-  }else {
-    return false;
   }
 }
 
@@ -102,6 +110,5 @@ function get_sobre(){
     return $sobre['sobre'];
   }
 }
-
 
 ?>

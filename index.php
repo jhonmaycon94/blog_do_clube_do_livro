@@ -67,13 +67,13 @@
       <?php
       $posts = get_posts();
       foreach($posts as $key=>$post){
-        foreach($post as $post){
-      echo '<div class="blog-post">';
-      echo '<h2 class="blog-post-title">'.$post["titulo"].'</h2>';
-      echo '<p class="blog-post-meta">'.$post["data_publicacao"].' por <a href="#">'.get_username_from_id($post["autor"]).'</a></p>';
-      echo '<p>'.$post["conteudo"].'</p>';
-      echo '</div>';
-        }
+        foreach($post as $post){ ?>
+          <div class="blog-post">
+          <h2 class="blog-post-title"><?php echo $post["titulo"] ?></h2>
+          <p class="blog-post-meta"><?php echo $post["data_publicacao"] ?> "por" <a href="#"><?php echo get_username_from_id($post["autor"])?></a></p>
+          <p><?php echo $post["conteudo"] ?>
+          </div>
+      <?php  }
     }
       ?>
 
