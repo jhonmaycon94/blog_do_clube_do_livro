@@ -67,18 +67,21 @@
       <?php
       $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null));
         foreach($posts as $post){ ?>
-          <div class="blog-post">
+          <div id="blog-post" class="blog-post">
           <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>"><?php echo $post["title"]; ?></a></h2>
           <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($post["user_id"]);?></a></p>
           <p><?php echo $post["texto"]; ?></p>
-          <a href="resources/delete_post.php?id=<?php echo $post['id'];?>">Excluir</a>
-          <a href="edit_post.php?id=<?php echo $post['id'];?>">Editar</a>
           </div>
+          <?php if(isset($_SESSION['user_id'])){ ?>
+          <a href="resources/delete_post.php?id=<?php echo $post['id'];?>">Excluir</a>
+          <a href="edit_post.php?id=<?php echo $post['id'];?>#form">Editar</a>
+          <?php } ?>
       <?php }?>
 
       <?php
-      if(isset($_SESSION['user_id'])){
-        echo '<a href="add_post.php">Nova Publicação</a><br/>';
+      if(isset($_SESSION['user_id'])){ ?>
+        <a href="add_post.php#form">Nova Publicação</a><br/>
+      <?php
       }
       ?>
 

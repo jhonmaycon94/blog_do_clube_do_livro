@@ -65,13 +65,13 @@
       </h3>
 
       <?php $post = get_posts($_GET['id']); ?>  
-      <form action="resources/edit_post_res.php?id=<?php echo $_GET['id']; ?>" method="POST">
+      <form id="form" action="resources/edit_post_res.php?id=<?php echo $_GET['id']; ?>" method="POST">
         <div class="form-group">
-          <label class=sr-only for=titulo>Título:</label>
+          <label for=titulo>Título:</label>
           <input type="text" id=titulo name=titulo class="form-control" value="<?php echo $post[0]['title']; ?>">
         </div>
         <div class="form-group">
-        <label class="sr-only" for="conteudo">Escreva aqui sua nova postagem</label>
+        <label for="conteudo">Altere abaixo sua publicação:</label>
         <textarea id="conteudo" name="conteudo" class="form-control" rows="20"><?php echo $post[0]['texto']; ?></textarea>
         </div>
         <button type="submit" id=bt_editar name=bt_editar class="btn btn-dark">Editar</button>

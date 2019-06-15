@@ -89,7 +89,7 @@ if(!isset($_POST['bt_submit_login'])){
             if(get_user_id($_POST['username'])){
               $_SESSION['user_id'] = get_user_id($_POST['username']);
               $_SESSION['username'] = $_POST['username'];
-              header("Location: ../login.php?login=sucesso");
+              header("Location: ../index.php?login=sucesso");
               exit();
             }
           }

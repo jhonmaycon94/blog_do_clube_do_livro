@@ -65,7 +65,7 @@
       </h3>
 
       <form action="resources/novo_post_res.php" method="POST">
-        <div class="form-group">
+        <div id= "form" class="form-group">
           <label class=sr-only for=titulo>Título:</label>
           <input type="text" id=titulo name=titulo class="form-control" placeholder="Título:">
         </div>
