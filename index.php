@@ -70,7 +70,8 @@
           <div class="blog-post">
           <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>"><?php echo $post["title"]; ?></a></h2>
           <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($post["user_id"]);?></a></p>
-          <p><?php echo $post["texto"]; ?>
+          <p><?php echo $post["texto"]; ?></p>
+          <a name="link_excluir" href="resources/delete_post.php?id=<?php echo $post['id'];?>">Excluir</a>
           </div>
       <?php }?>
 

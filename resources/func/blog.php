@@ -42,7 +42,7 @@ function delete_post($id){
   global $mysqli;
   $sql = "DELETE FROM posts WHERE id = ?";
 
-  $stmt = $mysqli->smtm_init();
+  $stmt = $mysqli->stmt_init();
   if(!($stmt = $mysqli->prepare($sql))){
     return;
   }
