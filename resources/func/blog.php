@@ -13,28 +13,23 @@ function add_post($user_id, $title, $conteudo){
 }
 }
 
-function edit_post($post_id, $user_id,$title, $conteudo){
+function edit_post($post_id, $title, $conteudo){
   global $mysqli;
-  //compara o user_id passado por parâmetro com o do banco de dados
-  //se for igual permite a edição
-  //insere o novo título e novo conteudo no banco de dados
-  //senão sai da função
-  $query = "SELECT user_id FROM posts WHERE id = $post_id;";
-  if($mysqli->query($query)){
-    $result = $mysqli->query($query)->fetch_assoc();
-    $user_id_bd = $result['user_id'];
-    if($user_id != $user_id_bd){
-      return false;
-    }
-    else{
-      $query = "UPDATE posts SET title = $title and SET texto = $conteudo and SET data = LOCALTIME() WHERE id = $post_id;";
-      if($mysqli->query($query)){
-        return true;
-      }
-      else{
-        return false;
-      }
-    }
+
+  $sql = "UPDATE posts SET title = ? , texto = ? , data = NOW() WHERE id = ?";
+
+  $stmt = $mysqli->stmt_init();
+  if(!($stmt = $mysqli->prepare($sql))){
+    return;
+  }
+  else if(!($stmt->bind_param("sss", $title, $conteudo, $post_id))){
+    return;
+  }
+  else if(!($stmt->execute())){
+    return;
+  }
+  else{
+    return true;
   }
 }
 

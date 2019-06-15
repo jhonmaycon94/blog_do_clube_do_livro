@@ -1,4 +1,4 @@
-<?php require_once "includes/bigheader.php"; ?>
+<?php require_once "includes/bigheader.php";?>
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
@@ -61,31 +61,21 @@
   <div class="row">
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
-        Publicações
+        Nova Postagem
       </h3>
 
-      <?php
-      $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null));
-        foreach($posts as $post){ ?>
-          <div class="blog-post">
-          <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>"><?php echo $post["title"]; ?></a></h2>
-          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($post["user_id"]);?></a></p>
-          <p><?php echo $post["texto"]; ?></p>
-          <a href="resources/delete_post.php?id=<?php echo $post['id'];?>">Excluir</a>
-          <a href="edit_post.php?id=<?php echo $post['id'];?>">Editar</a>
-          </div>
-      <?php }?>
-
-      <?php
-      if(isset($_SESSION['user_id'])){
-        echo '<a href="add_post.php">Nova Publicação</a><br/>';
-      }
-      ?>
-
-      <nav class="blog-pagination">
-        <a class="btn btn-outline-primary" href="#">Mais Antigas</a>
-        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Mais novas</a>
-      </nav>
+      <?php $post = get_posts($_GET['id']); ?>  
+      <form action="resources/edit_post_res.php?id=<?php echo $_GET['id']; ?>" method="POST">
+        <div class="form-group">
+          <label class=sr-only for=titulo>Título:</label>
+          <input type="text" id=titulo name=titulo class="form-control" value="<?php echo $post[0]['title']; ?>">
+        </div>
+        <div class="form-group">
+        <label class="sr-only" for="conteudo">Escreva aqui sua nova postagem</label>
+        <textarea id="conteudo" name="conteudo" class="form-control" rows="20"><?php echo $post[0]['texto']; ?></textarea>
+        </div>
+        <button type="submit" id=bt_editar name=bt_editar class="btn btn-dark">Editar</button>
+      </form>
 
     </div><!-- /.blog-main -->
 
