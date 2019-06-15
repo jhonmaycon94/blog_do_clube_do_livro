@@ -67,8 +67,8 @@
       <?php
       $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null));
         foreach($posts as $post){ ?>
-          <div id="blog-post" class="blog-post">
-          <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>"><?php echo $post["title"]; ?></a></h2>
+          <div id="blog_post" class="blog-post">
+          <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2>
           <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($post["user_id"]);?></a></p>
           <p><?php echo $post["texto"]; ?></p>
           </div>
@@ -78,11 +78,26 @@
           <?php } ?>
       <?php }?>
 
+      <?php 
+        if(isset($_SESSION['user_id'])){
+          if(isset($_GET['id'])){ ?>
+            <form action="resources/comentario_res.php" method="POST">
+              <div class="form-group">
+              <label class="sr-only" for="conteudo">Escreva seu comentário aqui</label>
+              <textarea id="comentario" name="comentario" class="form-control" placeholder="Escreva seu comentário aqui..." rows="10"></textarea>
+              </div>
+              <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
+            </form>
+        <?php 
+          }
+        }   
+        ?>
+
       <?php
       if(isset($_SESSION['user_id'])){ ?>
         <a href="add_post.php#form">Nova Publicação</a><br/>
       <?php
-      }
+        } 
       ?>
 
       <nav class="blog-pagination">
