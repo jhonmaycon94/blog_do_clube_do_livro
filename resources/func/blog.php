@@ -107,4 +107,27 @@ function get_sobre(){
   }
 }
 
+function add_comentario($conteudo, $post_id, $user_id){
+  global $mysqli;
+
+  $query = "INSERT INTO comentarios(post_id, user_id, conteudo, data) VALUES (?, ?, ?, NOW());";
+
+  $stmt = $mysqli->stmt_init();
+  if(!($stmt = $mysqli->prepare($query))){
+    echo $mysqli->erro;
+    return;
+  }
+  elseif(!($stmt->bind_param("sss", $post_id, $user_id, $conteudo))){
+    echo $mysqli->erro;
+    return;
+  }
+  elseif(!($stmt->execute())){
+    echo $mysqli->erro;
+    return;
+  }
+  else{
+    return true;
+  }
+}
+
 ?>

@@ -81,7 +81,7 @@
       <?php 
         if(isset($_SESSION['user_id'])){
           if(isset($_GET['id'])){ ?>
-            <form action="resources/comentario_res.php" method="POST">
+            <form action="resources/comentario_res.php?post_id=<?php echo $_GET['id'] ?>" method="POST">
               <div class="form-group">
               <label class="sr-only" for="conteudo">Escreva seu comentário aqui</label>
               <textarea id="comentario" name="comentario" class="form-control" placeholder="Escreva seu comentário aqui..." rows="10"></textarea>
