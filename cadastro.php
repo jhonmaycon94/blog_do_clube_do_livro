@@ -62,18 +62,18 @@
               <div class="d-block my-3">
                 <h5>Sexo:</h5>
                 <div class="custom-control custom-radio">
-                  <input id="rb_masc" name="rb_sexo" type="radio" class="custom-control-input" checked required>
+                  <input id="rb_masc" name="rb_sexo" type="radio" class="custom-control-input" value="masculino" checked required>
                   <label class="custom-control-label" for="rb_masc">Masculino</label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input id="rb_fem" name="rb_sexo" type="radio" class="custom-control-input" required>
+                  <input id="rb_fem" name="rb_sexo" type="radio" class="custom-control-input" value="feminino" required>
                   <label class="custom-control-label" for="rb_fem">Feminino</label>
                 </div>
               </div>
             </div>
           </div>
           <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar</button>
+          <button class="btn btn-primary btn-lg btn-block" name="bt_enviar" type="submit">Enviar</button>
         </form>
       </div>
       <div class="col-md-2"></div>

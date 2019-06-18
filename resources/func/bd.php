@@ -20,5 +20,25 @@ function get_user_id($username){
     $row = $result->fetch_assoc();
     return $row['user_id'];
   }
+
+  function add_usuario($username, $senha, $primeiro_nome, $sobrenome, $idade, $sexo){
+    global $mysqli;
+
+    $sql = "INSERT INTO usuarios(username, senha, nome, sobrenome, idade, sexo) VALUES(?, ?, ?, ?, ?, ?);";
+
+    $stmt = $mysqli->stmt_init();
+    if(!($stmt = $mysqli->prepare($sql))){
+      return;
+    }
+    elseif (!($stmt->bind_param("ssssss", $username, $senha, $primeiro_nome, $sobrenome, $idade, $sexo))) {
+      return;
+    }
+    elseif (!($stmt->execute())) {
+      return;
+    }
+    else{
+      return true;
+    }
+  }
 }
 ?>
