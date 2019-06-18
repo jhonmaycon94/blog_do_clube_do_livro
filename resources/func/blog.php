@@ -114,19 +114,42 @@ function add_comentario($conteudo, $post_id, $user_id){
 
   $stmt = $mysqli->stmt_init();
   if(!($stmt = $mysqli->prepare($query))){
-    echo $mysqli->erro;
     return;
   }
   elseif(!($stmt->bind_param("sss", $post_id, $user_id, $conteudo))){
-    echo $mysqli->erro;
     return;
   }
   elseif(!($stmt->execute())){
-    echo $mysqli->erro;
     return;
   }
   else{
     return true;
+  }
+}
+
+function get_comentarios($post_id){
+  global $mysqli;
+  $comentarios = array();
+
+  $query = "SELECT *,DATE_FORMAT(data, '%d/%b/%Y %T') as data_formatada FROM comentarios WHERE post_id = ? ORDER BY id DESC";
+
+  $stmt = $mysqli->stmt_init();
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("s", $post_id))){
+    return;
+  }
+  elseif(!($stmt->execute())){
+    return;
+  }
+  else{
+    $result =  $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+      $comentarios[] = $row;
+    }
+    
+    return $comentarios;
   }
 }
 

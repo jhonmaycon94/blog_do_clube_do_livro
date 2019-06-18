@@ -88,7 +88,16 @@
               </div>
               <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
             </form>
+            <h2>comentários</h2>
         <?php 
+          $comentarios = get_comentarios($_GET['id']);
+          foreach($comentarios as $comentario){ ?>
+            <div id="blog_comentario" class="blog-comentario">
+              <p><?php echo $comentario["conteudo"]; ?></p>
+              <p class="blog-comentario-meta"><?php echo $comentario["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($comentario["user_id"]);?></a></p>
+          </div>
+          <?php
+          } 
           }
         }   
         ?>
