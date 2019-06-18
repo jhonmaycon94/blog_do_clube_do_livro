@@ -78,7 +78,7 @@
           <?php } ?>
       <?php }?>
 
-      <?php 
+      <?php
         if(isset($_SESSION['user_id'])){
           if(isset($_GET['id'])){ ?>
             <form action="resources/comentario_res.php?post_id=<?php echo $_GET['id'] ?>" method="POST">
@@ -89,7 +89,7 @@
               <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
             </form>
             <h2>comentários</h2>
-        <?php 
+        <?php
           $comentarios = get_comentarios($_GET['id']);
           foreach($comentarios as $comentario){ ?>
             <div id="blog_comentario" class="blog-comentario">
@@ -97,16 +97,16 @@
               <p class="blog-comentario-meta"><?php echo $comentario["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($comentario["user_id"]);?></a></p>
           </div>
           <?php
-          } 
           }
-        }   
+          }
+        }
         ?>
 
       <?php
       if(isset($_SESSION['user_id'])){ ?>
         <a href="add_post.php#form">Nova Publicação</a><br/>
       <?php
-        } 
+        }
       ?>
 
       <nav class="blog-pagination">
