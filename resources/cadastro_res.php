@@ -10,7 +10,7 @@ else{
   $senha = trim($_POST['senha']);
   $confirma_senha = trim($_POST['confirma_senha']);
   $idade = trim($_POST['idade']);
-  $sexo = trim($_POST['rb_sexo']);
+  $sexo = $_POST['rb_sexo'];
 
 if(empty($primeiro_nome) && empty($sobrenome) && empty($username) && empty($senha) && empty($confirma_senha) && empty($idade) && empty($sexo)){
   header("Location: ../cadastro.php?erro=1");
@@ -45,7 +45,7 @@ elseif (strcmp($senha, $confirma_senha) != 0) {
   exit();
 }
 else{
-  require_once('func/bd.php');
+  require_once('func\bd.php');
 
   if(!(add_usuario($username, $senha, $primeiro_nome, $sobrenome, $idade, $sexo))){
     header("Location: ../cadastro.php?erro=9");
@@ -56,5 +56,4 @@ else{
   }
 }
 }
-
 ?>
