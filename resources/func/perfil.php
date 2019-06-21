@@ -67,4 +67,71 @@ function add_livro($user_id, $nome_autor, $ano, $titulo, $genero){
   }
 }
 
+function get_livros($user_id){
+  global $mysqli;
+  $livros = array();
+
+  $query = "SELECT * FROM livros WHERE user_id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif (!($stmt->bind_param("s", $user_id))) {
+    return;
+  }
+  elseif (!($stmt->execute())) {
+    return;
+  }
+  else{
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+      $livros[] = $row;
+    }
+
+    return $livros;
+  }
+}
+
+function add_genero($user_id, $nome){
+  global $mysqli;
+
+  $query = "INSERT INTO generos(user_id, nome) VALUES(?, ?);";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("ss", $user_id, $nome))){
+    return;
+  }
+  elseif(!($stmt->execute())){
+    return;
+  }
+  else{
+    return true;
+  }
+}
+
+function get_generos($user_id){
+  global $mysqli;
+  $generos = array();
+
+  $query = "SELECT * FROM generos WHERE user_id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("s", $user_id))){
+    return;
+  }
+  elseif (!($stmt->execute())) {
+    return;
+  }
+  else{
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+      $generos[] = $row;
+    }
+    return $generos;
+  }
+}
 ?>

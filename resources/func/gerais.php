@@ -17,7 +17,7 @@ function mostra_username(){
 }
 
 function redireciona_cadastro_perfil(){
-  return(status_login()) ? "perfil.php" : "cadastro.php";
+  return(status_login()) ? "profile.php" : "cadastro.php";
 }
 
 function retorna_usuario(){

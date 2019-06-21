@@ -1,14 +1,14 @@
 <?php require_once "includes/bigheader.php"; ?>
 
 <div class="container emp-profile">
-            <form method="post">
+            <form method="post" action="resources/file_res.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
                             <img src="_imagens/icone_img_perfil.png" alt="icone de perfil"/>
                             <div class="file btn btn-lg btn-primary">
                                 mudar foto
-                                <input type="file" name="file"/>
+
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,7 @@
 
                     </div>
                     <div class="col-md-2">
+                        <input type="file" name="file"/>
                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
                     </div>
                 </div>
@@ -151,8 +152,5 @@
                 </div>
             </form>
         </div>
-        <?php
-            add_livro($_SESSION['user_id'], "Reis", "2013", "Geometria Analítica", "Didático");
-        ?>
 
 <?php require_once "includes/bigfooter.php"; ?>
