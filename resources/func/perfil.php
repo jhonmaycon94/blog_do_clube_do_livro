@@ -134,4 +134,50 @@ function get_generos($user_id){
     return $generos;
   }
 }
+
+function add_image_bd($user_id, $caminho_arquivo){
+  global $mysqli;
+
+  $query = "UPDATE usuarios SET foto_perfil = ? WHERE user_id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    echo $mysqli->error;
+    return;
+  }
+  elseif(!($stmt->bind_param("ss", $caminho_arquivo, $user_id))){
+    echo $mysqli->error;
+    return;
+  }
+  elseif(!($stmt->execute())){
+    echo $mysqli->error;
+    return;
+  }
+  else{
+    return true;
+  }
+}
+
+function get_foto_perfil($user_id){
+  global $mysqli;
+  $caminho_foto_perfil = '';
+
+  $query = "SELECT foto_perfil FROM usuarios WHERE user_id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("s", $user_id))){
+    return;
+  }
+  elseif (!($stmt->execute())) {
+    return;
+  }
+  else{
+    $result = $stmt->get_result();
+    $caminho_foto_perfil = $result->fetch_assoc();
+    return $caminho_foto_perfil;
+  }
+}
 ?>
+
+

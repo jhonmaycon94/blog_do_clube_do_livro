@@ -42,3 +42,7 @@ function edit_sobre(){
   container.replaceChild(form, p);
   container.removeChild(icone);
 }
+
+function manipula_foto_perfil(_caminho_foto){
+  var foto_perfil = Document.getElementById('foto_perfil').src = _caminho_foto;
+}

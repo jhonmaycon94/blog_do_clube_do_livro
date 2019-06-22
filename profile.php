@@ -1,14 +1,21 @@
 <?php require_once "includes/bigheader.php"; ?>
 
 <div class="container emp-profile">
-            <form method="post" action="resources/file_res.php" enctype="multipart/form-data">
+            <form method="post" action="file_res.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="_imagens/icone_img_perfil.png" alt="icone de perfil"/>
+                            <?php 
+                                $foto_perfil = "_imagens/icone_img_perfil.png";
+                                if(isset($_SESSION['user_id'])){ 
+                                    $foto_perfil_bd = get_foto_perfil($_SESSION['user_id']);
+                                    $foto_perfil = $foto_perfil_bd['foto_perfil'];
+                                    echo $foto_perfil;
+                                }
+                            ?>
+                            <img src="<?php echo $foto_perfil ?>" alt="icone de perfil"/>
                             <div class="file btn btn-lg btn-primary">
                                 mudar foto
-
                             </div>
                         </div>
                     </div>
