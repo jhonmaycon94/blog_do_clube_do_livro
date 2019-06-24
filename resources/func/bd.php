@@ -9,7 +9,7 @@ function get_user_id($username){
   if(!($stmt = $mysqli->prepare($sql))){
     return;
   }
-  else if(!($stmt->bind_param('s', $_POST['username']))){
+  else if(!($stmt->bind_param('s', $username))){
     return;
   }
   else if(!($stmt->execute())){

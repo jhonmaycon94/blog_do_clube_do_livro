@@ -175,7 +175,7 @@ function get_foto_perfil($user_id){
   else{
     $result = $stmt->get_result();
     $caminho_foto_perfil = $result->fetch_assoc();
-    return $caminho_foto_perfil;
+    return $caminho_foto_perfil['foto_perfil'];
   }
 }
 ?>

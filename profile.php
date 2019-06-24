@@ -6,12 +6,7 @@
                     <div class="col-md-4">
                         <div class="profile-img">
                             <?php 
-                                $foto_perfil = "_imagens/icone_img_perfil.png";
-                                if(isset($_SESSION['user_id'])){ 
-                                    $foto_perfil_bd = get_foto_perfil($_SESSION['user_id']);
-                                    $foto_perfil = $foto_perfil_bd['foto_perfil'];
-                                    echo $foto_perfil;
-                                }
+                                $foto_perfil = (get_foto_perfil($_GET['user_id']) == null) ? "_imagens/icone_img_perfil.png" : get_foto_perfil($_GET['user_id']);
                             ?>
                             <img src="<?php echo $foto_perfil ?>" alt="icone de perfil"/>
                             <div class="file btn btn-lg btn-primary">

@@ -69,7 +69,7 @@
         foreach($posts as $post){ ?>
           <div id="blog_post" class="blog-post">
           <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2>
-          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="profile.php"><?php echo get_username_from_id($post["user_id"]);?></a></p>
+          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["user_id"]; ?>"><?php echo get_username_from_id($post["user_id"]);?></a></p>
           <p><?php echo $post["texto"]; ?></p>
           </div>
           <?php if(isset($_SESSION['user_id'])){ ?>
