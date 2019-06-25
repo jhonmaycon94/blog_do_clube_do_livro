@@ -103,9 +103,9 @@ $generos = get_generos($user_id);
                                         <?php 
                                             if(isset($_SESSION['user_id']) && $_SESSION['user_id']==$user_id){
                                         ?>
-                                        <div class="row">
+                                        <div class="row" id="bt-row-livros">
                                           <div class="col-md-12">
-                                            <p>adicionar livro</p>
+                                            <button type="button" class="btn btn-dark" onclick="add_livro()" id="bt_add_livro">adicionar livro</button>
                                           </div>
                                         </div>
                                             <?php } ?>    
@@ -128,6 +128,15 @@ $generos = get_generos($user_id);
                                             </div>
                                         </div>
                                         <?php } ?>
+                                        <?php 
+                                            if(isset($_SESSION['user_id']) && $_SESSION['user_id']==$user_id){
+                                        ?>
+                                        <div class="row" id="bt-row-autores">
+                                          <div class="col-md-12">
+                                            <button type="button" class="btn btn-dark" onclick="add_autor()" id="bt_add_autor">adicionar escritor</button>
+                                          </div>
+                                        </div>
+                                            <?php } ?>  
                             </div>
                             <div class="tab-pane fade" id="generos" role="tabpanel" aria-labelledby="generos-tab">
                                         <?php
@@ -147,6 +156,15 @@ $generos = get_generos($user_id);
                                             </div>
                                         </div>
                                         <?php } ?>
+                                        <?php 
+                                            if(isset($_SESSION['user_id']) && $_SESSION['user_id']==$user_id){
+                                        ?>
+                                        <div class="row" id="bt-row-genero">
+                                          <div class="col-md-12">
+                                            <button type="button" class="btn btn-dark" onclick="add_genero()" id="bt_add_genero">adicionar gênero</button>
+                                          </div>
+                                        </div>
+                                            <?php } ?>  
                             </div>
                         </div>
                     </div>
