@@ -1,5 +1,5 @@
 <?php
-require_once "./conexao.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/blog_do_clube_do_livro/resources/conexao.php";
 
 function get_user_id($username){
   global $mysqli;
@@ -42,6 +42,28 @@ function add_usuario($username, $senha, $primeiro_nome, $sobrenome, $idade, $sex
   }
   else{
     return true;
+  }
+}
+
+function get_usuario($user_id){
+  global $mysqli;
+
+  $usuario = array();
+
+  $query = "SELECT * FROM usuarios WHERE user_id = ?";
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("s", $user_id))){
+    return;
+  }
+  elseif(!($stmt->execute())){
+    return;
+  }
+  else{
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+    return $usuario;
   }
 }
 ?>
