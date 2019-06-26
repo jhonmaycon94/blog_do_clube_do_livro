@@ -47,12 +47,12 @@ function manipula_foto_perfil(_caminho_foto){
   var foto_perfil = Document.getElementById('foto_perfil').src = _caminho_foto;
 }
 
-function add_livro(){
+function add_livro(user_id){
   var row_add_livro = document.getElementById('bt-row-livros');
   var tab_pane_livros = document.getElementById('livros');
 
   var form = document.createElement('form');
-  form.action = "resources/add_livro.php";
+  form.action = "resources/add_livro.php?user_id="+user_id;
   form.method = "POST";
 
   var row = document.createElement('div');
@@ -144,12 +144,12 @@ function add_livro(){
   col_bt.appendChild(bt_add_livro);
 }
 
-function add_autor(){
+function add_autor(user_id){
   var tab_escritores = document.getElementById("escritores");
   var row_bt_add_autor = document.getElementById("bt-row-autores");
 
   var form = document.createElement("form");
-  form.action = "resources/add_autor.php";
+  form.action = "resources/add_autor.php?user_id="+user_id;
   form.method = "POST";
 
   var row_input = document.createElement("div");
@@ -210,6 +210,61 @@ function add_autor(){
 
 }
 
-function add_genero(){
+function add_genero(user_id){
+  var tab_generos = document.getElementById("generos");
+  var bt = document.getElementById("bt-row-genero");
 
+  var form = document.createElement("form");
+  form.action = "resources/add_genero.php?user_id="+user_id;
+  form.method = "POST";
+
+  var row_input = document.createElement("div");
+  row_input.classList.add("row");
+
+  var col_input1 = document.createElement("div");
+  col_input1.classList.add("col-md-6");
+
+  var col_input2 = document.createElement("div");
+  col_input2.classList.add("col-md-6");
+
+  var form_group_input = document.createElement("div");
+  form_group_input.classList.add("form-group");
+
+  var form_group_bt = document.createElement("div");
+  form_group_bt.classList.add("form-group");
+
+  var input_genero = document.createElement("input");
+  input_genero.type = "text";
+  input_genero.id = "input_genero";
+  input_genero.name = "input_genero";
+  input_genero.placeholder = "adicione um gênero...";
+  input_genero.classList.add("form-control");
+
+  var row_bt = document.createElement("div");
+  row_bt.classList.add("row");
+
+  var col_bt = document.createElement("div");
+  col_bt.classList.add("col-md-12");
+
+  var bt_add_genero = document.createElement("button");
+  bt_add_genero.type = "submit";
+  bt_add_genero.id = "bt_add_genero";
+  bt_add_genero.name = "bt_add_genero";
+  bt_add_genero.classList.add("btn");
+  bt_add_genero.classList.add("btn-dark");
+  bt_add_genero.classList.add("btn-small");
+  bt_add_genero.innerHTML = "adicionar gênero";
+
+  tab_generos.appendChild(form);
+  tab_generos.removeChild(bt);
+  form.appendChild(row_input);
+  row_input.appendChild(col_input1);
+  row_input.appendChild(col_input2);
+  col_input1.appendChild(form_group_input);
+  form_group_input.appendChild(input_genero);
+  form.appendChild(row_bt);
+  row_bt.appendChild(col_bt);
+  col_bt.appendChild(form_group_bt);
+  form_group_bt.appendChild(bt_add_genero);
+  
 }

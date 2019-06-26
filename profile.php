@@ -105,7 +105,7 @@ $generos = get_generos($user_id);
                                         ?>
                                         <div class="row" id="bt-row-livros">
                                           <div class="col-md-12">
-                                            <button type="button" class="btn btn-dark" onclick="add_livro()" id="bt_add_livro">adicionar livro</button>
+                                            <button type="button" class="btn btn-dark" onclick="add_livro(<?php echo $user_id ?>)" id="bt_add_livro">adicionar livro</button>
                                           </div>
                                         </div>
                                             <?php } ?>    
@@ -133,7 +133,7 @@ $generos = get_generos($user_id);
                                         ?>
                                         <div class="row" id="bt-row-autores">
                                           <div class="col-md-12">
-                                            <button type="button" class="btn btn-dark" onclick="add_autor()" id="bt_add_autor">adicionar escritor</button>
+                                            <button type="button" class="btn btn-dark" onclick="add_autor(<?php echo $user_id ?>)" id="bt_add_autor">adicionar escritor</button>
                                           </div>
                                         </div>
                                             <?php } ?>  
@@ -161,7 +161,7 @@ $generos = get_generos($user_id);
                                         ?>
                                         <div class="row" id="bt-row-genero">
                                           <div class="col-md-12">
-                                            <button type="button" class="btn btn-dark" onclick="add_genero()" id="bt_add_genero">adicionar gênero</button>
+                                            <button type="button" class="btn btn-dark" onclick="add_genero(<?php echo $user_id ?>)" id="bt_add_genero">adicionar gênero</button>
                                           </div>
                                         </div>
                                             <?php } ?>  
