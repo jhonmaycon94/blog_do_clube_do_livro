@@ -1,6 +1,6 @@
 <?php require_once "includes/bigheader.php"; ?>
 
-      <div class="nav-scroller py-1 mb-2">
+     <!-- <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
           <a class="p-2 text-muted" href="#">World</a>
           <a class="p-2 text-muted" href="#">U.S.</a>
@@ -15,47 +15,14 @@
           <a class="p-2 text-muted" href="#">Style</a>
           <a class="p-2 text-muted" href="#">Travel</a>
         </nav>
-      </div>
+      </div> -->
 
       <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-          <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-          <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-          <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+          <h1 class="display-4 font-italic text-center">Bem-vindo(a) ao Blog do clube do livro</h1>
+          <p class="lead my-3 text-center">Aqui você vai encontrar resumos, sugestões, preferências entre outras coisas do mundo literário. Prepare-se para se deliciar no mundo da leitura!</p>
         </div>
-      </div>
-
-      <div class="row mb-2">
-        <div class="col-md-6">
-          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-              <strong class="d-inline-block mb-2 text-primary">World</strong>
-              <h3 class="mb-0">Featured post</h3>
-              <div class="mb-1 text-muted">Nov 12</div>
-              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="stretched-link">Continue reading</a>
-            </div>
-            <div class="col-auto d-none d-lg-block">
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-              <strong class="d-inline-block mb-2 text-success">Design</strong>
-              <h3 class="mb-0">Post title</h3>
-              <div class="mb-1 text-muted">Nov 11</div>
-              <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="stretched-link">Continue reading</a>
-            </div>
-            <div class="col-auto d-none d-lg-block">
-              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      </div> 
 
 <main role="main" class="container">
   <div class="row">
@@ -64,13 +31,20 @@
         Publicações
       </h3>
 
+       <?php
+      if(isset($_SESSION['user_id'])){ ?>
+        <a href="add_post.php#form">Nova Publicação</a><br/>
+      <?php
+        }
+      ?>
+
       <?php
       $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null));
         foreach($posts as $post){ ?>
           <div id="blog_post" class="blog-post">
-          <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2>
+          <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2><br>
           <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["user_id"]; ?>"><?php echo get_username_from_id($post["user_id"]);?></a></p>
-          <p><?php echo $post["texto"]; ?></p>
+          <p class="text-justify"><?php echo $post["texto"]; ?></p>
           </div>
           <?php if(isset($_SESSION['user_id'])){ ?>
           <a href="resources/delete_post.php?id=<?php echo $post['id'];?>">Excluir</a>
@@ -83,31 +57,34 @@
           if(isset($_GET['id'])){ ?>
             <form action="resources/comentario_res.php?post_id=<?php echo $_GET['id'] ?>" method="POST">
               <div class="form-group">
-              <label class="sr-only" for="conteudo">Escreva seu comentário aqui</label>
-              <textarea id="comentario" name="comentario" class="form-control" placeholder="Escreva seu comentário aqui..." rows="10"></textarea>
+                <label class="sr-only" for="conteudo">Escreva seu comentário aqui</label>
+                <textarea id="comentario" name="comentario" class="form-control" placeholder="Escreva seu comentário aqui..." rows="5"></textarea>
               </div>
-              <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
+              <div class="form-group">
+                <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
+              </div>
             </form>
-            <h2>comentários</h2>
+
+            <div class="container">
+              <div class="row border-bottom">
+                <div class="col-md-8 blog-main">
+                  <h2>Comentários</h2>
+                </div>
+              </div>    
         <?php
           $comentarios = get_comentarios($_GET['id']);
           foreach($comentarios as $comentario){ ?>
+          <div class="row">
             <div id="blog_comentario" class="blog-comentario">
-              <p><?php echo $comentario["conteudo"]; ?></p>
-              <p class="blog-comentario-meta"><?php echo $comentario["data_formatada"]; ?> por <a href="#"><?php echo get_username_from_id($comentario["user_id"]);?></a></p>
+              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".get_username_from_id($comentario["user_id"]);?> comentou:</p>
+              <p class="text-muted"><?php echo $comentario["conteudo"]; ?></p>
           </div>
+         </div> 
           <?php
           }
           }
         }
         ?>
-
-      <?php
-      if(isset($_SESSION['user_id'])){ ?>
-        <a href="add_post.php#form">Nova Publicação</a><br/>
-      <?php
-        }
-      ?>
 
       <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Mais Antigas</a>
