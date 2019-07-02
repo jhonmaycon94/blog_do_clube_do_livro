@@ -47,7 +47,9 @@ elseif (strcmp($senha, $confirma_senha) != 0) {
 else{
   require_once('func\bd.php');
 
-  if(!(add_usuario($username, $senha, $primeiro_nome, $sobrenome, $idade, $sexo))){
+  $hashedpwd = password_hash($senha, PASSWORD_DEFAULT);
+
+  if(!(add_usuario($username, $hashedpwd, $primeiro_nome, $sobrenome, $idade, $sexo))){
     header("Location: ../cadastro.php?erro=9");
     exit();
   }

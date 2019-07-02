@@ -19,7 +19,7 @@ if(!isset($_POST['bt_submit_login'])){
     header("Location: ../login.php?erro=3&username=".$_POST['username']);
     exit();
   }
-  else if(trim($_POST['senha']).strlen() < 4){
+  else if(strlen(trim($_POST['senha'])) < 4){
     header("Location: ../login.php?erro=7&username=".$_POST['username']);
     exit();
   }
@@ -59,7 +59,7 @@ if(!isset($_POST['bt_submit_login'])){
       //checa se o usuário e senham inseridos são corretos
       else{
         //prepared statement
-        $sql = "SELECT * FROM usuarios WHERE username = ? AND senha = ?";
+        $sql = "SELECT * FROM usuarios WHERE username = ?";
 
         //checa se não ocorre nenhum erro ao executar o prepared statement
         $stmt = $mysqli->stmt_init();
@@ -67,7 +67,7 @@ if(!isset($_POST['bt_submit_login'])){
           header("Location: ../login.php?erro=4&username=".$_POST['username']);
           exit();
         }
-        else if(!($stmt->bind_param('ss', $_POST['username'], $_POST['senha']))){
+        else if(!($stmt->bind_param('s', $_POST['username']))){
           header("Location: ../login.php?erro=4&username=".$_POST['username']);
           exit();
         }
@@ -78,7 +78,9 @@ if(!isset($_POST['bt_submit_login'])){
         //checa se a uma combinação com este usuario e senha
         else{
           $result = $stmt->get_result();
-          if(!($result->num_rows > 0)){
+          $row = $result->fetch_assoc();
+          $hashed_password_check = password_verify($_POST['senha'], $row['senha']);
+          if($hashed_password_check == false){
             header("Location: ../login.php?erro=6&username=".$_POST['username']);
             exit();
           }
