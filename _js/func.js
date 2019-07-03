@@ -54,6 +54,7 @@ function add_livro(user_id){
   var form = document.createElement('form');
   form.action = "resources/add_livro.php?user_id="+user_id;
   form.method = "POST";
+  form.classList.add("pt-2");
 
   var row = document.createElement('div');
   row.classList.add("row");
@@ -123,6 +124,7 @@ function add_livro(user_id){
 
   var col_bt = document.createElement("div");
   col_bt.classList.add("col-md-12");
+  col_bt.classList.add("offset-md-4");
 
   tab_pane_livros.appendChild(form);
   form.appendChild(row);
@@ -151,6 +153,7 @@ function add_autor(user_id){
   var form = document.createElement("form");
   form.action = "resources/add_autor.php?user_id="+user_id;
   form.method = "POST";
+  form.classList.add("pt-2");
 
   var row_input = document.createElement("div");
   row_input.classList.add("row");
@@ -186,6 +189,7 @@ function add_autor(user_id){
 
   var col_bt = document.createElement("div");
   col_bt.classList.add("col-md-12");
+  col_bt.classList.add("offset-md-4");
 
   var bt_add_autor = document.createElement("button");
   bt_add_autor.type = "submit";
@@ -217,12 +221,14 @@ function add_genero(user_id){
   var form = document.createElement("form");
   form.action = "resources/add_genero.php?user_id="+user_id;
   form.method = "POST";
+  form.classList.add("pt-2");
 
   var row_input = document.createElement("div");
   row_input.classList.add("row");
+  row_input.classList.add("offset-md-3");
 
   var col_input1 = document.createElement("div");
-  col_input1.classList.add("col-md-6");
+  col_input1.classList.add("col-md-8");
 
   var col_input2 = document.createElement("div");
   col_input2.classList.add("col-md-6");
@@ -245,6 +251,7 @@ function add_genero(user_id){
 
   var col_bt = document.createElement("div");
   col_bt.classList.add("col-md-12");
+  col_bt.classList.add("offset-md-4");
 
   var bt_add_genero = document.createElement("button");
   bt_add_genero.type = "submit";
