@@ -29,7 +29,7 @@
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
         Publicações
-      </h3>
+      </h3> 
 
        <?php
       if(isset($_SESSION['user_id'])){ ?>
@@ -53,8 +53,9 @@
       <?php }?>
 
       <?php
+      if(isset($_GET['id'])){
         if(isset($_SESSION['user_id'])){
-          if(isset($_GET['id'])){ ?>
+           ?>
             <form action="resources/comentario_res.php?post_id=<?php echo $_GET['id'] ?>" method="POST">
               <div class="form-group">
                 <label class="sr-only" for="conteudo">Escreva seu comentário aqui</label>
@@ -64,7 +65,7 @@
                 <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
               </div>
             </form>
-
+        <?php } ?>
             <div class="container">
               <div class="row border-bottom">
                 <div class="col-md-8 blog-main">
@@ -75,14 +76,18 @@
           $comentarios = get_comentarios($_GET['id']);
           foreach($comentarios as $comentario){ ?>
           <div class="row">
+            <div class="col-md-8">
             <div id="blog_comentario" class="blog-comentario">
               <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".get_username_from_id($comentario["user_id"]);?> comentou:</p>
               <p class="text-muted"><?php echo $comentario["conteudo"]; ?></p>
+              </div>
           </div>
          </div> 
           <?php
           }
-          }
+          ?>
+          </div>
+          <?php
         }
         ?>
 
@@ -90,8 +95,7 @@
         <a class="btn btn-outline-primary" href="#">Mais Antigas</a>
         <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Mais novas</a>
       </nav>
-
-    </div><!-- /.blog-main -->
+    </div>
 
     <aside class="col-md-4 blog-sidebar">
       <div class="p-4 mb-3 bg-light rounded" id="div-aside">
@@ -112,18 +116,12 @@
         </ol>
       </div>
 
-<!--      <div class="p-4">
-        <h4 class="font-italic">Elsewhere</h4>
-        <ol class="list-unstyled">
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Facebook</a></li>
-        </ol>
-      </div> -->
-    </aside><!-- /.blog-sidebar -->
+    </aside>
 
-  </div><!-- /.row -->
+  </div>
 
-</main><!-- /.container -->
+  </div>
+
+</main>
 
 <?php require_once "includes/bigfooter.php"; ?>

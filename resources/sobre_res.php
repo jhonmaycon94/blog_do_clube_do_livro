@@ -39,7 +39,7 @@ else{
   }
   //se nenhum erro ocorrer, redireciona para o index
   else{
-    header("Location: ../index.php");
+    header("Location: ../index.php?status=sucesso");
     exit();
   }
 }
