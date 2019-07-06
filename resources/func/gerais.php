@@ -25,7 +25,7 @@ function redireciona_cadastro_perfil(){
 function retorna_usuario(){
   if(isset($_GET['erro'])){
     if($_GET['erro'] == 3 || $_GET['erro'] == 6 || $_GET['erro'] == 7){
-      return $_GET['username'];
+      return htmlentities($_GET['username']);
     }
   }else {
     return;

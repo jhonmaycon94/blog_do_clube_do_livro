@@ -49,7 +49,7 @@
           <?php if(isset($_SESSION['user_id'])){ ?>
           <div class="row offset-md-9 border mb-4">
           <div class="col-md-12">
-          <a class="mx-4" href="resources/delete_post.php?id=<?php echo $post['id'];?>">Excluir</a>
+          <a class="mx-4" href="resources/delete_post.php?id=<?php echo htmlentities($post['id']);?>">Excluir</a>
           <a href="edit_post.php?id=<?php echo $post['id'];?>#form">Editar</a>
           </div> 
           </div>
@@ -60,7 +60,7 @@
       if(isset($_GET['id'])){
         if(isset($_SESSION['user_id'])){
            ?>
-            <form action="resources/comentario_res.php?post_id=<?php echo $_GET['id'] ?>" method="POST">
+            <form action="resources/comentario_res.php?post_id=<?php echo htmlentities($_GET['id']) ?>" method="POST">
               <div class="form-group">
                 <label class="sr-only" for="conteudo">Escreva seu comentário aqui</label>
                 <textarea id="comentario" name="comentario" class="form-control" placeholder="Escreva seu comentário aqui..." rows="5"></textarea>
