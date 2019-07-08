@@ -2,19 +2,11 @@
       <div class="row align-items-center">
         <div class="col-md-4"></div>
           <div class="col-md-4">
-            <div class="container">
               <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-2">
-                  <img src="_imagens/livro-aberto.png" alt="livro aberto">
+                <div class="col-md-12 box">
+                  <img class="offset-md-2 offset-xs-6" src="_imagens/livro-aberto.png" alt="livro aberto">
                 </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2"></div>
-
               </div>
-            </div>
             <?php
               if(isset($_GET['erro'])){
                 $erros = [1 => "O formulário não pode ser enviado em branco",
