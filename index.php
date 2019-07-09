@@ -39,11 +39,11 @@
       ?>
 
       <?php
-      $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null));
+      $posts = get_posts(((isset($_GET['id'])) ? $_GET['id'] : null),(isset($_GET['data'])? $_GET['data'] : null));
         foreach($posts as $post){ ?>
           <div id="blog_post" class="blog-post">
           <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2><br>
-          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["admin_id"]; ?>"><?php echo get_admin_from_id($post["admin_id"]);?></a></p>
+          <p class="blog-post-meta"><?php echo "Publicado em ".$post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["admin_id"]; ?>"><?php echo get_admin_from_id($post["admin_id"]);?></a></p>
           <p class="text-justify"><?php echo $post["texto"]; ?></p>
           </div>
           <?php if(isset($_SESSION['admin'])){ ?>
@@ -115,7 +115,7 @@
         <ol class="list-unstyled mb-0">
           <?php $datas_post = get_posts_publication_date();
           foreach ($datas_post as $data_post) { ?>
-          <li><a href="#"><?php echo $data_post ?></a></li>
+          <li><a href="index.php?data=<?php echo $data_post['mes'] ?>"><?php echo $data_post['data_formatada'] ?></a></li>
         <?php } ?>
         </ol>
       </div>

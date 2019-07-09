@@ -82,13 +82,17 @@ function get_admin_from_id($id){
 }
 
 //recupera a lista de post do banco de dados
-function get_posts($id = null){
+function get_posts($id = null, $data = null){
   global $mysqli;
   $posts = array();
   $query = "SELECT *,DATE_FORMAT(data, '%d/%b/%Y') as data_formatada FROM posts";
 
   if(isset($id)){
     $query .= " WHERE id = ".$id;
+  }
+
+  if(isset($data)){
+    $query .=" WHERE MONTH(data) = ".$data;
   }
 
   $query .= " ORDER BY id DESC";
@@ -171,11 +175,11 @@ function get_posts_publication_date(){
   global $mysqli;
   $datas = array();
 
-  $query = "SELECT DATE_FORMAT(data, '%M %Y') as data_formatada FROM posts ORDER BY id DESC";
+  $query = "SELECT DISTINCT DATE_FORMAT(data, '%M %Y') as data_formatada, DATE_FORMAT(data, '%m') as mes FROM posts ORDER BY id DESC";
   $result = $mysqli->query($query);
 
   while ($row = $result->fetch_assoc()) {
-    $datas[] = $row['data_formatada'];
+    $datas[] = $row;
   }
     return $datas;
   }
