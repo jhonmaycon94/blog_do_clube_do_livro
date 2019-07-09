@@ -167,4 +167,17 @@ function get_comentarios($post_id){
   }
 }
 
+function get_posts_publication_date(){
+  global $mysqli;
+  $datas = array();
+
+  $query = "SELECT DATE_FORMAT(data, '%M %Y') as data_formatada FROM posts ORDER BY id DESC";
+  $result = $mysqli->query($query);
+
+  while ($row = $result->fetch_assoc()) {
+    $datas[] = $row['data_formatada'];
+  }
+    return $datas;
+  }
+
 ?>

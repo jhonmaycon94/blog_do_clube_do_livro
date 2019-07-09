@@ -31,7 +31,7 @@ else{
 
       require_once("conexao.php");
 
-      $sql = "INSERT INTO posts(user_id, title, texto, data) VALUES (?, ?, ?, NOW());";
+      $sql = "INSERT INTO posts(admin_id, title, texto, data) VALUES (?, ?, ?, NOW());";
 
       $stmt = $mysqli->stmt_init();
       if(!($stmt = $mysqli->prepare($sql))){
@@ -39,7 +39,7 @@ else{
         header("Location: ../add_post.php?erro=4");
         exit();
       }
-      else if(!($stmt->bind_param('sss',$_SESSION['user_id'],$titulo,$conteudo))){
+      else if(!($stmt->bind_param('sss',$_SESSION['admin_id'],$titulo,$conteudo))){
         //echo $mysqli->error;
         header("Location: ../add_post.php?erro=4");
         exit();

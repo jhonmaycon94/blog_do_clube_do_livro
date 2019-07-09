@@ -82,7 +82,7 @@
           <div class="row">
             <div class="col-md-8">
             <div id="blog_comentario" class="blog-comentario">
-              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".get_admin_from_id($comentario["admin_id"]);?> comentou:</p>
+              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".get_admin_from_id($comentario["user_id"]);?> comentou:</p>
               <p class="text-muted"><?php echo $comentario["conteudo"]; ?></p>
               </div>
           </div>
@@ -113,10 +113,10 @@
       <div class="p-4">
         <h4 class="font-italic">Arquivo</h4>
         <ol class="list-unstyled mb-0">
-          <li><a href="#">Junho 2019</a></li>
-          <li><a href="#">Maio 2019</a></li>
-          <li><a href="#">Abril 2019</a></li>
-          <li><a href="#">Março 2019</a></li>
+          <?php $datas_post = get_posts_publication_date();
+          foreach ($datas_post as $data_post) { ?>
+          <li><a href="#"><?php echo $data_post ?></a></li>
+        <?php } ?>
         </ol>
       </div>
 
