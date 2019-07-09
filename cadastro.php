@@ -50,39 +50,7 @@
             <label for="confirma_senha">Confirme a senha</label>
             <input type="password" class="form-control" id="confirma_senha" name="confirma_senha">
           </div>
-
-          <div class="row">
-            <div class="col-md-4 mb-3">
-            <label for="idade">Idade:</label>
-              <div class="input-group">
-                <input type="number" class="form-control" name="idade" id="idade" min=1 max="200">
-              </div>
-            </div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4 mb-3">
-
-            <div class="row">
-
-              <div class="col-md-6">
-                <label>Sexo:</label>
-              </div>
-
-              <div class="col-md-6">
-                <div class="d-block my-3">
-                  <div class="custom-control custom-radio">
-                    <input id="rb_masc" name="rb_sexo" type="radio" class="custom-control-input" value="masculino" checked required>
-                    <label class="custom-control-label" for="rb_masc">Masculino</label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input id="rb_fem" name="rb_sexo" type="radio" class="custom-control-input" value="feminino" required>
-                    <label class="custom-control-label" for="rb_fem">Feminino</label>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+          
           <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" name="bt_enviar" type="submit">Enviar</button>
         </form>

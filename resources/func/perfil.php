@@ -1,15 +1,15 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/blog_do_clube_do_livro/resources/conexao.php';
 
-function add_autor($user_id, $primeiro_nome, $ultimo_nome){
+function add_autor($admin_id, $primeiro_nome, $ultimo_nome){
   global $mysqli;
 
-  $query = "INSERT INTO autores(user_id, primeiro_nome, ultimo_nome) VALUES(?, ?, ?);";
+  $query = "INSERT INTO autores(admin_id, primeiro_nome, ultimo_nome) VALUES(?, ?, ?);";
 
   if(!($stmt = $mysqli->prepare($query))){
     return;
   }
-  elseif (!($stmt->bind_param("sss", $user_id, $primeiro_nome, $ultimo_nome))) {
+  elseif (!($stmt->bind_param("sss", $admin_id, $primeiro_nome, $ultimo_nome))) {
     return;
   }
   elseif (!($stmt->execute())) {
@@ -20,16 +20,16 @@ function add_autor($user_id, $primeiro_nome, $ultimo_nome){
   }
 }
 
-function get_autores($user_id){
+function get_autores($admin_id){
   global $mysqli;
   $autores = array();
 
-  $query = "SELECT * FROM autores WHERE user_id = ?";
+  $query = "SELECT * FROM autores WHERE admin_id = ?";
 
   if(!($stmt = $mysqli->prepare($query))){
     return;
   }
-  elseif (!($stmt->bind_param("s", $user_id))) {
+  elseif (!($stmt->bind_param("s", $admin_id))) {
     return;
   }
   elseif (!($stmt->execute())) {
@@ -45,16 +45,16 @@ function get_autores($user_id){
   }
 }
 
-function add_livro($user_id, $nome_autor, $ano, $titulo, $genero){
+function add_livro($admin_id, $nome_autor, $ano, $titulo, $genero){
   global $mysqli;
 
-  $query = "INSERT INTO livros(user_id, nome_autor, ano, title, genero) VALUES(?, ?, ?, ?, ?);";
+  $query = "INSERT INTO livros(admin_id, nome_autor, ano, title, genero) VALUES(?, ?, ?, ?, ?);";
 
   if(!($stmt = $mysqli->prepare($query))){
     echo $mysqli->error;
     return;
   }
-  elseif (!($stmt->bind_param("sssss", $user_id, $nome_autor, $ano, $titulo, $genero))) {
+  elseif (!($stmt->bind_param("sssss", $admin_id, $nome_autor, $ano, $titulo, $genero))) {
     echo $mysqli->error;
     return;
   }
@@ -67,16 +67,16 @@ function add_livro($user_id, $nome_autor, $ano, $titulo, $genero){
   }
 }
 
-function get_livros($user_id){
+function get_livros($admin_id){
   global $mysqli;
   $livros = array();
 
-  $query = "SELECT * FROM livros WHERE user_id = ?";
+  $query = "SELECT * FROM livros WHERE admin_id = ?";
 
   if(!($stmt = $mysqli->prepare($query))){
     return;
   }
-  elseif (!($stmt->bind_param("s", $user_id))) {
+  elseif (!($stmt->bind_param("s", $admin_id))) {
     return;
   }
   elseif (!($stmt->execute())) {
@@ -92,15 +92,15 @@ function get_livros($user_id){
   }
 }
 
-function add_genero($user_id, $nome){
+function add_genero($admin_id, $nome){
   global $mysqli;
 
-  $query = "INSERT INTO generos(user_id, nome) VALUES(?, ?);";
+  $query = "INSERT INTO generos(admin_id, nome) VALUES(?, ?);";
 
   if(!($stmt = $mysqli->prepare($query))){
     return;
   }
-  elseif(!($stmt->bind_param("ss", $user_id, $nome))){
+  elseif(!($stmt->bind_param("ss", $admin_id, $nome))){
     return;
   }
   elseif(!($stmt->execute())){
@@ -111,16 +111,16 @@ function add_genero($user_id, $nome){
   }
 }
 
-function get_generos($user_id){
+function get_generos($admin_id){
   global $mysqli;
   $generos = array();
 
-  $query = "SELECT * FROM generos WHERE user_id = ?";
+  $query = "SELECT * FROM generos WHERE admin_id = ?";
 
   if(!($stmt = $mysqli->prepare($query))){
     return;
   }
-  elseif(!($stmt->bind_param("s", $user_id))){
+  elseif(!($stmt->bind_param("s", $admin_id))){
     return;
   }
   elseif (!($stmt->execute())) {
@@ -135,16 +135,16 @@ function get_generos($user_id){
   }
 }
 
-function add_image_bd($user_id, $caminho_arquivo){
+function add_image_bd($admin_id, $caminho_arquivo){
   global $mysqli;
 
-  $query = "UPDATE usuarios SET foto_perfil = ? WHERE user_id = ?";
+  $query = "UPDATE usuarios SET foto_perfil = ? WHERE admin_id = ?";
 
   if(!($stmt = $mysqli->prepare($query))){
     echo $mysqli->error;
     return;
   }
-  elseif(!($stmt->bind_param("ss", $caminho_arquivo, $user_id))){
+  elseif(!($stmt->bind_param("ss", $caminho_arquivo, $admin_id))){
     echo $mysqli->error;
     return;
   }
@@ -157,16 +157,16 @@ function add_image_bd($user_id, $caminho_arquivo){
   }
 }
 
-function get_foto_perfil($user_id){
+function get_foto_perfil($admin_id){
   global $mysqli;
   $caminho_foto_perfil = '';
 
-  $query = "SELECT foto_perfil FROM usuarios WHERE user_id = ?";
+  $query = "SELECT foto_perfil FROM usuarios WHERE admin_id = ?";
 
   if(!($stmt = $mysqli->prepare($query))){
     return;
   }
-  elseif(!($stmt->bind_param("s", $user_id))){
+  elseif(!($stmt->bind_param("s", $admin_id))){
     return;
   }
   elseif (!($stmt->execute())) {
@@ -179,5 +179,3 @@ function get_foto_perfil($user_id){
   }
 }
 ?>
-
-

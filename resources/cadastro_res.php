@@ -36,10 +36,6 @@ elseif (empty($confirma_senha)) {
   header("Location: ../cadastro.php?erro=6");
   exit();
 }
-elseif (empty($idade)) {
-  header("Location: ../cadastro.php?erro=7");
-  exit();
-}
 elseif (strcmp($senha, $confirma_senha) != 0) {
   header("Location: ../cadastro.php?erro=8");
   exit();
@@ -49,7 +45,7 @@ else{
 
   $hashedpwd = password_hash($senha, PASSWORD_DEFAULT);
 
-  if(!(add_usuario($username, $hashedpwd, $primeiro_nome, $sobrenome, $idade, $sexo))){
+  if(!(add_usuario($username, $hashedpwd, $primeiro_nome, $sobrenome))){
     header("Location: ../cadastro.php?erro=9");
     exit();
   }

@@ -67,6 +67,20 @@ function get_username_from_id($id){
   return $username;
 }
 
+function get_admin_from_id($id){
+  global $mysqli;
+  $query = "SELECT username FROM admin WHERE admin_id = $id";
+  if(!$mysqli->query($query)){
+    echo $mysqli->error;
+  }else{
+    $result = $mysqli->query($query);
+    while ($row = $result->fetch_assoc()) {
+      $username = $row['username'];
+    }
+  }
+  return $username;
+}
+
 //recupera a lista de post do banco de dados
 function get_posts($id = null){
   global $mysqli;
@@ -78,7 +92,7 @@ function get_posts($id = null){
   }
 
   $query .= " ORDER BY id DESC";
-  
+
   if(!$mysqli->query($query)){
     return false;
   }
@@ -148,7 +162,7 @@ function get_comentarios($post_id){
     while($row = $result->fetch_assoc()){
       $comentarios[] = $row;
     }
-    
+
     return $comentarios;
   }
 }

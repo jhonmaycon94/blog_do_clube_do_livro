@@ -5,7 +5,7 @@
           <h1 class="display-4 font-italic text-center">Bem-vindo(a) ao Blog do clube do livro</h1>
           <p class="lead my-3 text-center">Aqui você vai encontrar resumos, sugestões, preferências entre outras coisas do mundo literário. Prepare-se para se deliciar no mundo da leitura!</p>
         </div>
-      </div> 
+      </div>
 
 <main role="main" class="container">
   <div class="row">
@@ -31,7 +31,7 @@
     <aside class="col-md-4 blog-sidebar">
       <div class="p-4 mb-3 bg-light rounded" id="div-aside">
         <h4 class="font-italic" id="h4-aside">Sobre</h4>
-          <?php if(isset($_SESSION['user_id'])){
+          <?php if(isset($_SESSION['admin'])){
             echo '<i class="fas fa-edit" onclick="edit_sobre()" id="icone_editar_sobre"></i>';
           } ?>
         <p id="p_sobre" class="mb-0"><?php echo get_sobre(); ?></p>

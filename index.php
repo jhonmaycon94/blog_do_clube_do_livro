@@ -22,17 +22,17 @@
           <h1 class="display-4 font-italic text-center">Bem-vindo(a) ao Blog do clube do livro</h1>
           <p class="lead my-3 text-center">Aqui você vai encontrar resumos, sugestões, preferências entre outras coisas do mundo literário. Prepare-se para se deliciar no mundo da leitura!</p>
         </div>
-      </div> 
+      </div>
 
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
         Publicações
-      </h3> 
+      </h3>
 
        <?php
-      if(isset($_SESSION['user_id'])){ ?>
+      if(isset($_SESSION['admin'])){ ?>
         <a href="add_post.php#form">Nova Publicação</a><br/>
       <?php
         }
@@ -43,22 +43,22 @@
         foreach($posts as $post){ ?>
           <div id="blog_post" class="blog-post">
           <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2><br>
-          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["user_id"]; ?>"><?php echo get_username_from_id($post["user_id"]);?></a></p>
+          <p class="blog-post-meta"><?php echo $post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["admin_id"]; ?>"><?php echo get_admin_from_id($post["admin_id"]);?></a></p>
           <p class="text-justify"><?php echo $post["texto"]; ?></p>
           </div>
-          <?php if(isset($_SESSION['user_id'])){ ?>
+          <?php if(isset($_SESSION['admin'])){ ?>
           <div class="row offset-md-9 border mb-4">
           <div class="col-md-12">
           <a class="mx-4" href="resources/delete_post.php?id=<?php echo htmlentities($post['id']);?>">Excluir</a>
           <a href="edit_post.php?id=<?php echo $post['id'];?>#form">Editar</a>
-          </div> 
+          </div>
           </div>
           <?php } ?>
       <?php }?>
 
       <?php
       if(isset($_GET['id'])){
-        if(isset($_SESSION['user_id'])){
+      //  if(isset($_SESSION['user_id'])){
            ?>
             <form action="resources/comentario_res.php?post_id=<?php echo htmlentities($_GET['id']) ?>" method="POST">
               <div class="form-group">
@@ -69,24 +69,24 @@
                 <button type="submit" id=bt_comentar name=bt_comentar class="btn btn-dark">Publicar</button>
               </div>
             </form>
-        <?php } ?>
+        <?php //} ?>
             <div class="container">
               <div class="row border-bottom">
                 <div class="col-md-8 blog-main">
                   <h2>Comentários</h2>
                 </div>
-              </div>    
+              </div>
         <?php
           $comentarios = get_comentarios($_GET['id']);
           foreach($comentarios as $comentario){ ?>
           <div class="row">
             <div class="col-md-8">
             <div id="blog_comentario" class="blog-comentario">
-              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".get_username_from_id($comentario["user_id"]);?> comentou:</p>
+              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".get_admin_from_id($comentario["admin_id"]);?> comentou:</p>
               <p class="text-muted"><?php echo $comentario["conteudo"]; ?></p>
               </div>
           </div>
-         </div> 
+         </div>
           <?php
           }
           ?>
@@ -104,7 +104,7 @@
     <aside class="col-md-4 blog-sidebar">
       <div class="p-4 mb-3 bg-light rounded" id="div-aside">
         <h4 class="font-italic" id="h4-aside">Sobre</h4>
-          <?php if(isset($_SESSION['user_id'])){
+          <?php if(isset($_SESSION['admin'])){
             echo '<i class="fas fa-edit offset-md-8" onclick="edit_sobre()" id="icone_editar_sobre"></i>';
           } ?>
         <p id="p_sobre" class="mb-0"><?php echo get_sobre(); ?></p>

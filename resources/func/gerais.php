@@ -3,7 +3,7 @@
 include_once("bd.php");
 
 function status_login(){
-  return (isset($_SESSION['user_id'])) ? true : false;
+  return ((isset($_SESSION['user_id']) || isset($_SESSION['admin_id']))) ? true : false;
 }
 
 function msg_status_login(){

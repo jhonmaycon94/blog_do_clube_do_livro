@@ -4,7 +4,7 @@
           <div class="col-md-4">
               <div class="row">
                 <div class="col-md-12">
-                  <img class="offset-md-2 offset-xs-6" src="_imagens/livro-aberto.png" alt="livro aberto">
+                  <h1 class="offset-xs-6 text-light text-center bg-dark">Administrador</h1>
                 </div>
               </div>
             <?php
@@ -29,7 +29,7 @@
             }
             }
             ?>
-            <form action="resources/login_res.php" method="POST">
+            <form action="resources/admin_res.php" method="POST">
               <div class="form-group">
                 <label for='username' class="sr-only">Usuário:</label>
                 <input type="text" name="username" placeholder="usuário" id="username" class="form-control" value="<?php echo retorna_usuario() ?>">
