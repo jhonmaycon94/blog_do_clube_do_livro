@@ -125,20 +125,20 @@ function get_sobre(){
   }
 }
 
-function add_comentario($conteudo, $post_id, $user_id){
+function add_comentario($conteudo, $post_id, $user_id=null, $admin_id=null){
   global $mysqli;
 
-  $query = "INSERT INTO comentarios(post_id, user_id, conteudo, data) VALUES (?, ?, ?, NOW());";
+  $query = "INSERT INTO comentarios(post_id, user_id, admin_id, conteudo, data) VALUES (?, ?, ?, ?, NOW());";
 
   $stmt = $mysqli->stmt_init();
-  if(!($stmt = $mysqli->prepare($query))){
-    return;
+  if(!($stmt = $mysqli->prepare($query))){ 
+    return $mysqli->error;
   }
-  elseif(!($stmt->bind_param("sss", $post_id, $user_id, $conteudo))){
-    return;
+  elseif(!($stmt->bind_param("ssss", $post_id, $user_id, $admin_id, $conteudo))){
+    return $mysqli->error;
   }
   elseif(!($stmt->execute())){
-    return;
+    return $mysqli->error;
   }
   else{
     return true;

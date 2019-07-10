@@ -13,7 +13,7 @@ else{
     }
     else{
         require_once('init.php');
-        if(!(add_comentario($comentario, $_GET['post_id'], $_SESSION['user_id']))){
+        if(!(add_comentario($comentario, $_GET['post_id'], (isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null), (isset($_SESSION['admin_id']) ? $_SESSION['admin_id'] : null)))){
             header("Location: ../index.php?id=".$post_id."&erro=2#blog_post");
             exit();
         }
