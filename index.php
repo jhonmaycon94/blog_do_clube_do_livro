@@ -42,7 +42,7 @@
         foreach($posts as $post){ ?>
           <div id="blog_post" class="blog-post">
           <h2 class="blog-post-title"><a href="index.php?id=<?php echo $post['id']; ?>#blog_post"><?php echo $post["title"]; ?></a></h2><br>
-          <p class="blog-post-meta"><?php echo "Publicado em ".$post["data_formatada"]; ?> por <a href="profile.php?user_id=<?php echo $post["admin_id"]; ?>"><?php echo get_admin_from_id($post["admin_id"]);?></a></p>
+          <p class="blog-post-meta"><?php echo "Publicado em ".$post["data_formatada"]; ?> por <a href="profile.php?admin_id=<?php echo $post["admin_id"]; ?>"><?php echo get_admin_from_id($post["admin_id"]);?></a></p>
           <p class="text-justify"><?php echo $post["texto"]; ?></p>
           </div>
           <?php if(isset($_SESSION['admin'])){ ?>

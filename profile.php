@@ -91,7 +91,11 @@ $generos = get_generos($admin_id);
                         <div class="col-md-3">
                             <p class="text-secondary"><?php echo $livro["genero"]; ?></p>
                         </div>
+                        <?php
+                            if(isset($_SESSION['admin']) && $_SESSION['admin_id']==$admin_id){
+                        ?>
                         <a href="resources/delete_livro.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $livro['id'] ?>">Excluir</a> 
+                            <?php } ?>
                     </div>
                     <?php } ?>
                     <?php
@@ -123,7 +127,11 @@ $generos = get_generos($admin_id);
                     <div class="row offset-md-3">
                         <div class="col-md-8 border-bottom pt-2">
                             <p class="text-secondary offset-md-4"><?php echo $autor["primeiro_nome"]." ".$autor["ultimo_nome"]; ?></p>
+                            <?php
+                            if(isset($_SESSION['admin']) && $_SESSION['admin_id']==$admin_id){
+                            ?>
                             <a href="resources/delete_autor.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $autor['id'] ?>">Excluir</a>
+                            <?php } ?>
                         </div>
                     </div>
                     <?php }
@@ -159,7 +167,11 @@ $generos = get_generos($admin_id);
                     <div class="row offset-md-3 pt-2">
                         <div class="col-md-8 border-bottom">
                             <p class="text-secondary offset-md-4"><?php echo $genero["nome"]; ?></p>
-                        <a href="resources/delete_genero.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $genero['id'] ?>">Excluir</a>
+                            <?php
+                            if(isset($_SESSION['admin']) && $_SESSION['admin_id']==$admin_id){
+                            ?>
+                            <a href="resources/delete_genero.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $genero['id'] ?>">Excluir</a>
+                            <?php } ?>
                         </div>
                     </div>
                     <?php }
