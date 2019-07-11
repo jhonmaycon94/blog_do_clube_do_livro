@@ -92,24 +92,6 @@ function get_livros($admin_id){
   }
 }
 
-function delete_livro($id){
-  global $mysqli;
-  $query = "DELETE * FROM livros WHERE id = ?";
-
-  if(!($stmt = $mysqli->prepare($query))){
-    return;
-  }
-  elseif(!($stmt->bind_param("s", $id))){
-    return;
-  }
-  elseif (!($stmt->execute())) {
-    return;
-  }
-  else{
-    return true;
-  }
-}
-
 function add_genero($admin_id, $nome){
   global $mysqli;
 
@@ -155,16 +137,52 @@ function get_generos($admin_id){
 
 function delete_genero($id){
   global $mysqli;
-  $query = "DELETE * FROM generos WHERE id = ?";
+  $query = "DELETE FROM generos WHERE id = ?";
 
   if(!($stmt = $mysqli->prepare($query))){
-    return;
+    return $mysqli->error;
   }
   elseif(!($stmt->bind_param("s", $id))){
-    return;
+    return $mysqli->error;
   }
   elseif (!($stmt->execute())) {
-    return;
+    return $mysqli->error;
+  }
+  else{
+    return true;
+  }
+}
+
+function delete_autor($id){
+  global $mysqli;
+  $query = "DELETE FROM autores WHERE id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return $mysqli->error;
+  }
+  elseif(!($stmt->bind_param("s", $id))){
+    return $mysqli->error;
+  }
+  elseif (!($stmt->execute())) {
+    return $mysqli->error;
+  }
+  else{
+    return true;
+  }
+}
+
+function delete_livro($id){
+  global $mysqli;
+  $query = "DELETE FROM livros WHERE id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return $mysqli->error;
+  }
+  elseif(!($stmt->bind_param("s", $id))){
+    return $mysqli->error;
+  }
+  elseif (!($stmt->execute())) {
+    return $mysqli->error;
   }
   else{
     return true;

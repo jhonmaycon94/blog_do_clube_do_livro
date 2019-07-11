@@ -273,5 +273,18 @@ function add_genero(admin_id){
   row_bt.appendChild(col_bt);
   col_bt.appendChild(form_group_bt);
   form_group_bt.appendChild(bt_add_genero);
+
+  }
   
-}
+function delete_genero(id) {
+  console.log("na função");
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("requisição com sucesso!");
+      console.log(xmlhttp.responseText);
+    };
+  };
+  xmlhttp.open("GET", "resources/delete_genero.php?id="+id, true);
+  xmlhttp.send();
+} 

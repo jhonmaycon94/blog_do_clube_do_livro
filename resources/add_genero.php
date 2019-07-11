@@ -13,13 +13,12 @@
       }
       else{
           require_once("func/perfil.php");
-          if(add_genero($admin_id, $genero){
-              header("Location: ../profile.php?admin_id=".$admin_id);
+          if(!(add_genero($admin_id, $genero))){
+              header("Location: ../profile.php?admin_id=".$admin_id."&erro=2");
               exit();
           }
           else{
-              header("Location: ../profile.php?admin_id=".$admin_id."&erro=2");
-              exit();
+              header("Location: ../profile.php?admin_id=".$admin_id);
           }
       }
   }

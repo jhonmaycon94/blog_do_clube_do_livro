@@ -91,7 +91,7 @@ $generos = get_generos($admin_id);
                         <div class="col-md-3">
                             <p class="text-secondary"><?php echo $livro["genero"]; ?></p>
                         </div>
-                        <a href="#" onclick="<?php delete_livro($livro['id']); ?>">excluir</a> 
+                        <a href="resources/delete_livro.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $livro['id'] ?>">Excluir</a> 
                     </div>
                     <?php } ?>
                     <?php
@@ -123,9 +123,11 @@ $generos = get_generos($admin_id);
                     <div class="row offset-md-3">
                         <div class="col-md-8 border-bottom pt-2">
                             <p class="text-secondary offset-md-4"><?php echo $autor["primeiro_nome"]." ".$autor["ultimo_nome"]; ?></p>
+                            <a href="resources/delete_autor.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $autor['id'] ?>">Excluir</a>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                     <?php
                         if(isset($_SESSION['admin']) && $_SESSION['admin_id']==$admin_id){
                     ?>
@@ -136,7 +138,7 @@ $generos = get_generos($admin_id);
                     </div>
                         <?php
                         }
-                    } ?>
+                     ?>
                 </div>
                 <div class="tab-pane fade" id="generos" role="tabpanel" aria-labelledby="generos-tab">
                     <?php
@@ -157,7 +159,7 @@ $generos = get_generos($admin_id);
                     <div class="row offset-md-3 pt-2">
                         <div class="col-md-8 border-bottom">
                             <p class="text-secondary offset-md-4"><?php echo $genero["nome"]; ?></p>
-                            <a href="#" onclick="<?php delete_genero($genero['id']); ?>">Excluir</a>
+                        <a href="resources/delete_genero.php?admin_id=<?php echo $admin_id; ?>&id=<?php echo $genero['id'] ?>">Excluir</a>
                         </div>
                     </div>
                     <?php }
