@@ -6,7 +6,12 @@ if(!(isset($_GET['id']))){
 }else{
 require_once('init.php');
 
-delete_post($_GET['id']);
+if(!(delete_post($_GET['id']))){
+    header("Location: ../index.php?erro=1");
+    exit();
+}else{
 header("Location: ../index.php");
+}
+//echo delete_post($_GET['id']);
 }
 ?>

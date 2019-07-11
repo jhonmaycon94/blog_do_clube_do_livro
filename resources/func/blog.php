@@ -40,7 +40,7 @@ function delete_post($id){
   $stmt = $mysqli->stmt_init();
   if(!($stmt = $mysqli->prepare($sql))){
     return;
-  }
+    }
   else if(!($stmt->bind_param('s', $id))){
     return;
   }

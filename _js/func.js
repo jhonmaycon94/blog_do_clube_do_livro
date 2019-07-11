@@ -47,12 +47,12 @@ function manipula_foto_perfil(_caminho_foto){
   var foto_perfil = Document.getElementById('foto_perfil').src = _caminho_foto;
 }
 
-function add_livro(user_id){
+function add_livro(admin_id){
   var row_add_livro = document.getElementById('bt-row-livros');
   var tab_pane_livros = document.getElementById('livros');
 
   var form = document.createElement('form');
-  form.action = "resources/add_livro.php?user_id="+user_id;
+  form.action = "resources/add_livro.php?admin_id="+admin_id;
   form.method = "POST";
   form.classList.add("pt-2");
 
@@ -146,12 +146,12 @@ function add_livro(user_id){
   col_bt.appendChild(bt_add_livro);
 }
 
-function add_autor(user_id){
+function add_autor(admin_id){
   var tab_escritores = document.getElementById("escritores");
   var row_bt_add_autor = document.getElementById("bt-row-autores");
 
   var form = document.createElement("form");
-  form.action = "resources/add_autor.php?user_id="+user_id;
+  form.action = "resources/add_autor.php?admin_id="+admin_id;
   form.method = "POST";
   form.classList.add("pt-2");
 
@@ -214,12 +214,12 @@ function add_autor(user_id){
 
 }
 
-function add_genero(user_id){
+function add_genero(admin_id){
   var tab_generos = document.getElementById("generos");
   var bt = document.getElementById("bt-row-genero");
 
   var form = document.createElement("form");
-  form.action = "resources/add_genero.php?user_id="+user_id;
+  form.action = "resources/add_genero.php?admin_id="+admin_id;
   form.method = "POST";
   form.classList.add("pt-2");
 

@@ -8,30 +8,30 @@
       $titulo = trim($_POST['input_titulo']);
       $ano = trim($_POST['input_ano']);
       $genero = trim($_POST['input_genero']);
-      $user_id = $_GET['user_id'];
+      $admin_id = $_GET['admin_id'];
 
       if(empty($titulo)){
-          header("Location: ../profile.php?user_id=".$user_id."&erro=1");
+          header("Location: ../profile.php?admin_id=".$admin_id."&erro=1");
           exit();
       }
       elseif(empty($nome_autor)){
-          header("Location: ../profile.php?user_id=".$user_id."&erro=1");
+          header("Location: ../profile.php?admin_id=".$admin_id."&erro=1");
           exit();
       }
        elseif(empty($ano)){
-          header("Location: ../profile.php?user_id=".$user_id."&erro=1");
+          header("Location: ../profile.php?admin_id=".$admin_id."&erro=1");
           exit();
       }
        elseif(empty($genero)){
-          header("Location: ../profile.php?user_id=".$user_id."&erro=1");
+          header("Location: ../profile.php?admin_id=".$admin_id."&erro=1");
           exit();
       }
       else{
           require_once("func/perfil.php");
-          if(add_livro($user_id, $nome_autor, $ano, $titulo, $genero))
-            header("Location: ../profile.php?user_id=".$user_id);
+          if(add_livro($admin_id, $nome_autor, $ano, $titulo, $genero))
+            header("Location: ../profile.php?admin_id=".$admin_id);
           else{
-              header("Location: ../profile.php?user_id=".$user_id."&erro=2");
+              header("Location: ../profile.php?admin_id=".$admin_id."&erro=2");
           }  
       }
   }

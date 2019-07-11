@@ -5,20 +5,20 @@
   }
   else{
       $genero = trim($_POST['input_genero']);
-      $user_id = $_GET['user_id'];
+      $admin_id = $_GET['admin_id'];
 
       if(empty($genero)){
-          header("Location: ../profile.php?user_id=".$user_id."&erro=1");
+          header("Location: ../profile.php?admin_id=".$admin_id."&erro=1");
           exit();
       }
       else{
           require_once("func/perfil.php");
-          if(add_genero($user_id, $genero)){
-              header("Location: ../profile.php?user_id=".$user_id);
+          if(add_genero($admin_id, $genero){
+              header("Location: ../profile.php?admin_id=".$admin_id);
               exit();
           }
           else{
-              header("Location: ../profile.php?user_id=".$user_id."&erro=2");
+              header("Location: ../profile.php?admin_id=".$admin_id."&erro=2");
               exit();
           }
       }

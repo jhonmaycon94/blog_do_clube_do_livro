@@ -1,4 +1,4 @@
-<?php require_once "includes/bigheader.php"; var_dump($_SESSION)?>
+<?php require_once "includes/bigheader.php"; ?>
 
      <!-- <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
@@ -81,7 +81,7 @@
           <div class="row">
             <div class="col-md-8">
             <div id="blog_comentario" class="blog-comentario">
-              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".((isset($comentario['admin_id'])) ? get_admin_from_id($comentario["admin_id"]) : get_username  _from_id($comentario["user_id"]) );?> comentou:</p>
+              <p class="blog-comentario-meta text-dark"><?php echo "Em ".$comentario["data_formatada"]; ?><?php echo " ".((isset($comentario['admin_id'])) ? get_admin_from_id($comentario["admin_id"]) : get_username_from_id($comentario["user_id"]) );?> comentou:</p>
               <p class="text-muted"><?php echo $comentario["conteudo"]; ?></p>
               </div>
           </div>

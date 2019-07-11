@@ -92,6 +92,24 @@ function get_livros($admin_id){
   }
 }
 
+function delete_livro($id){
+  global $mysqli;
+  $query = "DELETE * FROM livros WHERE id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("s", $id))){
+    return;
+  }
+  elseif (!($stmt->execute())) {
+    return;
+  }
+  else{
+    return true;
+  }
+}
+
 function add_genero($admin_id, $nome){
   global $mysqli;
 
@@ -132,6 +150,24 @@ function get_generos($admin_id){
       $generos[] = $row;
     }
     return $generos;
+  }
+}
+
+function delete_genero($id){
+  global $mysqli;
+  $query = "DELETE * FROM generos WHERE id = ?";
+
+  if(!($stmt = $mysqli->prepare($query))){
+    return;
+  }
+  elseif(!($stmt->bind_param("s", $id))){
+    return;
+  }
+  elseif (!($stmt->execute())) {
+    return;
+  }
+  else{
+    return true;
   }
 }
 

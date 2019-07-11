@@ -19,7 +19,7 @@ function mostra_username(){
 }
 
 function redireciona_cadastro_perfil(){
-  return(status_login()) ? "profile.php?user_id=".get_admin_id($_SESSION['username']) : "cadastro.php";
+  return(status_login()) ? "profile.php?admin_id=".get_admin_id($_SESSION['username']) : "cadastro.php";
 }
 
 function retorna_usuario(){

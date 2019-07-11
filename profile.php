@@ -1,6 +1,6 @@
 <?php require_once "includes/bigheader.php"; ?>
 <?php
-$admin_id = $_GET['user_id'];
+$admin_id = $_GET['admin_id'];
 $usuario = get_admin($admin_id);
 $livros = get_livros($admin_id);
 $autores = get_autores($admin_id);
@@ -14,7 +14,7 @@ $generos = get_generos($admin_id);
             <div class="col-md-3">
                 <div class="profile-img">
                 <?php
-                    $foto_perfil = (get_foto_perfil($_GET['user_id']) == null) ? "_imagens/icone_img_perfil.png" : get_foto_perfil($_GET['user_id']);
+                    $foto_perfil = (get_foto_perfil($_GET['admin_id']) == null) ? "_imagens/icone_img_perfil.png" : get_foto_perfil($_GET['user_id']);
                 ?>
                     <img id="blah" src="<?php echo $foto_perfil ?>" class="img-fluid img-thumbnail" alt="icone de perfil"/>
                     <div class="file btn btn-lg btn-primary">
@@ -91,6 +91,7 @@ $generos = get_generos($admin_id);
                         <div class="col-md-3">
                             <p class="text-secondary"><?php echo $livro["genero"]; ?></p>
                         </div>
+                        <a href="#" onclick="<?php delete_livro($livro['id']); ?>">excluir</a> 
                     </div>
                     <?php } ?>
                     <?php
@@ -156,9 +157,11 @@ $generos = get_generos($admin_id);
                     <div class="row offset-md-3 pt-2">
                         <div class="col-md-8 border-bottom">
                             <p class="text-secondary offset-md-4"><?php echo $genero["nome"]; ?></p>
+                            <a href="#" onclick="<?php delete_genero($genero['id']); ?>">Excluir</a>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php }
+                } ?>
                     <?php
                         if(isset($_SESSION['admin']) && $_SESSION['admin_id']==$admin_id){
                     ?>
@@ -168,7 +171,7 @@ $generos = get_generos($admin_id);
                         </div>
                     </div>
                         <?php }
-                        }?>
+                        ?>
                 </div>
             </div>
         </div>
